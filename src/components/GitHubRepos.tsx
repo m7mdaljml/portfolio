@@ -16,6 +16,7 @@ interface Repo {
   language: string | null;
   updated_at: string;
   fork: boolean;
+  homepage: string | "";
 }
 
 const LANG_COLORS: Record<string, string> = {
@@ -141,6 +142,16 @@ export default function GitHubRepos() {
                     <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                       {repo.description || gt.noDesc}
                     </p>
+                    {!!repo.homepage && (
+                      <a
+                        href={repo.homepage}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary leading-relaxed flex-1"
+                      >
+                        {repo.homepage}
+                      </a>
+                    )}
 
                     <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border">
                       <div className="flex items-center gap-3">
