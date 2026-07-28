@@ -59,9 +59,9 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight"
           >
-            Mohammad
+            {t.hero.firstname}
             <br />
-            <span className="glow-text">Aljamal</span>
+            <span className="glow-text">{t.hero.lastname}</span>
           </motion.h1>
 
           <motion.div

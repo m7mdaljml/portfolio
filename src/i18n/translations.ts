@@ -12,6 +12,8 @@ const translations = {
       github: "GitHub",
     },
     hero: {
+      firstname: "Mohammad",
+      lastname: "Aljamal",
       role: "Front-End Engineer",
       tagline:
         "Building scalable, high-performance web applications — one clean component at a time.",
@@ -85,6 +87,13 @@ const translations = {
       subtitle:
         "Beyond code, I've led communities, mentored peers, and competed on international stages.",
       items: [
+        {
+          title: "Technical Team Super Star - 2025",
+          organization: "Cubes Solution Inc.",
+          description:
+            "Honored as the most outstanding technical team member, recognized for technical excellence, leadership, and significant contributions to the team's success.",
+          year: "2025",
+        },
         {
           title: "IEEE Computer Society Chairman",
           organization: "Mutah University Student Branch",
@@ -173,6 +182,8 @@ const translations = {
       github: "GitHub",
     },
     hero: {
+      firstname: "محمد",
+      lastname: "الجمل",
       role: "مهندس واجهات أمامية",
       tagline:
         "بناء تطبيقات ويب قابلة للتطوير وعالية الأداء — مكوّن نظيف في كل مرة.",
@@ -246,6 +257,13 @@ const translations = {
       subtitle:
         "بعيداً عن الكود، قدت مجتمعات وأرشدت أقراني وتنافست على المسرح الدولي.",
       items: [
+        {
+          title: "نجم الفريق التقني - 2025",
+          organization: "Cubes Solution Inc.",
+          description:
+            "تم تكريمي بلقب نجم الفريق التقني، كأفضل عضو تقني في الفريق، واثني على مساهماتي التقنية المتميزة والقيادة في إنجاح العديد من المشاريع",
+          year: "2025",
+        },
         {
           title: "رئيس جمعية IEEE لعلوم الحاسوب",
           organization: "فرع طلاب جامعة مؤتة",

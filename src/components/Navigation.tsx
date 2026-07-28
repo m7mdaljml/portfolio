@@ -1,14 +1,30 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
+import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLang } from "@/context/LanguageContext";
+import DevLoader from "@/components/DevLoader";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { lang, toggleLang, t } = useLang();
+
+  const handleToggleTheme = useCallback(() => {
+    setLoading(true);
+    toggleTheme();
+  }, [toggleTheme]);
+
+  const handleToggleLang = useCallback(() => {
+    setLoading(true);
+    toggleLang();
+  }, [toggleLang]);
+
+  const handleLoaderComplete = useCallback(() => {
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -71,18 +87,21 @@ export default function Navigation() {
               ))}
 
               <motion.button
-                onClick={toggleLang}
+                onClick={handleToggleLang}
                 className="px-2.5 py-1 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all text-xs font-bold font-mono"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Toggle language"
                 data-testid="nav-lang-toggle"
               >
-                {lang === "en" ? "ع" : "EN"}
+                <span className="flex items-center gap-2">
+                  {lang === "en" ? "ع" : "EN"}
+                  <Globe size={18} />
+                </span>
               </motion.button>
 
               <motion.button
-                onClick={toggleTheme}
+                onClick={handleToggleTheme}
                 className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -95,14 +114,17 @@ export default function Navigation() {
 
             <div className="md:hidden flex items-center gap-2">
               <button
-                onClick={toggleLang}
-                className="px-2.5 py-1 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all text-xs font-bold"
+                onClick={handleToggleLang}
+                className="px-2.5 py-1 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all text-xs font-bold d-flex"
                 aria-label="Toggle language"
               >
-                {lang === "en" ? "ع" : "EN"}
+                <span className="flex items-center gap-2">
+                  {lang === "en" ? "ع" : "EN"}
+                  <Globe size={18} />
+                </span>
               </button>
               <button
-                onClick={toggleTheme}
+                onClick={handleToggleTheme}
                 className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all"
                 aria-label="Toggle theme"
               >
@@ -141,6 +163,7 @@ export default function Navigation() {
           </motion.div>
         )}
       </motion.nav>
+      <DevLoader show={loading} onComplete={handleLoaderComplete} />
     </>
   );
 }

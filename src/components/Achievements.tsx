@@ -1,15 +1,15 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Trophy, Users, Code, Globe } from 'lucide-react';
-import { useLang } from '@/context/LanguageContext';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Trophy, Users, Code, Globe, Star } from "lucide-react";
+import { useLang } from "@/context/LanguageContext";
 
-const icons = [Users, Code, Trophy, Globe, Code];
+const icons = [Star, Users, Code, Trophy, Globe, Code];
 const highlights = [true, false, false, true, false];
 
 export default function Achievements() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLang();
   const at = t.achievements;
 
@@ -26,11 +26,15 @@ export default function Achievements() {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-16">
-            <span className="text-primary font-mono text-sm">&lt;{at.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;{at.tag}&gt;
+            </span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 mb-6">
               {at.title}
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">{at.subtitle}</p>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              {at.subtitle}
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -43,7 +47,9 @@ export default function Achievements() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className={`bg-card border rounded-lg p-6 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/10 ${
-                    highlights[index] ? 'border-primary/50 md:col-span-2' : 'border-border'
+                    highlights[index]
+                      ? "border-primary/50 md:col-span-2"
+                      : "border-border"
                   }`}
                 >
                   <div className="flex items-start gap-4">
@@ -52,13 +58,19 @@ export default function Achievements() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-xl font-bold text-foreground">{achievement.title}</h3>
+                        <h3 className="text-xl font-bold text-foreground">
+                          {achievement.title}
+                        </h3>
                         <span className="text-xs font-mono text-muted-foreground flex-shrink-0 ms-2">
                           {achievement.year}
                         </span>
                       </div>
-                      <p className="text-sm text-primary font-semibold mb-3">{achievement.organization}</p>
-                      <p className="text-muted-foreground leading-relaxed">{achievement.description}</p>
+                      <p className="text-sm text-primary font-semibold mb-3">
+                        {achievement.organization}
+                      </p>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {achievement.description}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -72,7 +84,9 @@ export default function Achievements() {
             transition={{ delay: 0.6 }}
             className="mt-12"
           >
-            <span className="text-primary font-mono text-sm">&lt;/{at.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;/{at.tag}&gt;
+            </span>
           </motion.div>
         </motion.div>
       </div>
