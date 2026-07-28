@@ -41,8 +41,13 @@ export default function GitHubRepos() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    const headers: Record<string, string> = {};
+    const token = import.meta.env.VITE_GITHUB_TOKEN;
+    if (token) headers.Authorization = `Bearer ${token}`;
+
     fetch(
       "https://api.github.com/users/M7mdaljml/repos?sort=updated&per_page=6&type=owner",
+      { headers },
     )
       .then((r) => {
         if (!r.ok) throw new Error("failed");
