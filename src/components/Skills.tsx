@@ -1,60 +1,62 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { useLang } from '@/context/LanguageContext';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { useLang } from "@/context/LanguageContext";
 
 const skillData = [
   {
-    color: 'from-primary to-primary/70',
+    color: "from-primary to-primary/70",
     skills: [
-      { name: 'Vue.js', level: 95 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'JavaScript', level: 95 },
-      { name: 'HTML / CSS', level: 95 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'Bootstrap', level: 85 },
+      { name: "Vue.js", level: 95 },
+      { name: "React.js", level: 80 },
+      { name: "TypeScript", level: 95 },
+      { name: "JavaScript", level: 95 },
+      { name: "HTML / CSS", level: 95 },
+      { name: "Bootstrap", level: 95 },
+      { name: "Tailwind CSS", level: 80 },
     ],
   },
   {
-    color: 'from-violet-500 to-violet-500/70',
+    color: "from-violet-500 to-violet-500/70",
     skills: [
-      { name: 'REST APIs', level: 90 },
-      { name: 'Axios', level: 90 },
-      { name: 'Swagger / OpenAPI', level: 75 },
+      { name: "REST APIs", level: 90 },
+      { name: "Axios", level: 90 },
+      { name: "Swagger / OpenAPI", level: 75 },
+      { name: "Apache", level: 75 },
     ],
   },
   {
-    color: 'from-sky-500 to-sky-500/70',
+    color: "from-sky-500 to-sky-500/70",
     skills: [
-      { name: 'C++', level: 80 },
-      { name: 'PHP', level: 70 },
-      { name: 'MySQL', level: 75 },
-      { name: 'Apache', level: 65 },
+      { name: "C++", level: 80 },
+      { name: "PHP", level: 70 },
+      { name: "MySQL", level: 75 },
+      { name: "Apache", level: 65 },
     ],
   },
   {
-    color: 'from-emerald-500 to-emerald-500/70',
+    color: "from-emerald-500 to-emerald-500/70",
     skills: [
-      { name: 'Git / GitHub', level: 90 },
-      { name: 'Node.js', level: 80 },
-      { name: 'Vite', level: 85 },
-      { name: 'Microsoft Office', level: 85 },
+      { name: "Git / GitHub", level: 90 },
+      { name: "Node.js", level: 80 },
+      { name: "Vite", level: 85 },
+      { name: "Microsoft Office", level: 85 },
     ],
   },
   {
-    color: 'from-amber-500 to-amber-500/70',
+    color: "from-amber-500 to-amber-500/70",
     skills: [
-      { name: 'Problem Solving', level: 95 },
-      { name: 'Time Management', level: 90 },
-      { name: 'Fast & Self Learning', level: 95 },
-      { name: 'Presentation', level: 85 },
+      { name: "Problem Solving", level: 95 },
+      { name: "Time Management", level: 90 },
+      { name: "Fast & Self Learning", level: 95 },
+      { name: "Presentation", level: 85 },
     ],
   },
 ];
 
 export default function Skills() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLang();
   const st = t.skills;
 
@@ -76,11 +78,15 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-16">
-            <span className="text-primary font-mono text-sm">&lt;{st.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;{st.tag}&gt;
+            </span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 mb-6">
               {st.title}
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">{st.subtitle}</p>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              {st.subtitle}
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -107,17 +113,22 @@ export default function Skills() {
                       }}
                     >
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                        <span className="text-xs font-mono text-muted-foreground">{skill.level}%</span>
+                        <span className="text-sm font-medium text-foreground">
+                          {skill.name}
+                        </span>
+                        <span className="text-xs font-mono text-muted-foreground">
+                          {skill.level}%
+                        </span>
                       </div>
                       <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={isInView ? { width: `${skill.level}%` } : {}}
                           transition={{
-                            delay: categoryIndex * 0.1 + skillIndex * 0.05 + 0.2,
+                            delay:
+                              categoryIndex * 0.1 + skillIndex * 0.05 + 0.2,
                             duration: 0.8,
-                            ease: 'easeOut',
+                            ease: "easeOut",
                           }}
                           className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
                         />
@@ -135,7 +146,9 @@ export default function Skills() {
             transition={{ delay: 0.6 }}
             className="mt-12"
           >
-            <span className="text-primary font-mono text-sm">&lt;/{st.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;/{st.tag}&gt;
+            </span>
           </motion.div>
         </motion.div>
       </div>
