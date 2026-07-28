@@ -49,7 +49,9 @@ export default function GitHubRepos() {
         return r.json();
       })
       .then((data: Repo[]) => {
-        setRepos(data.filter((r) => !r.fork).slice(0, 6));
+        setRepos(
+          data.filter((r) => !r.fork && r.name !== "m7mdaljml").slice(0, 6),
+        );
         setLoading(false);
       })
       .catch(() => {
