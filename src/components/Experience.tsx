@@ -1,14 +1,14 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Briefcase, Calendar } from 'lucide-react';
-import { useLang } from '@/context/LanguageContext';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Briefcase, Calendar } from "lucide-react";
+import { useLang } from "@/context/language-context";
 
 const highlights = [true, false];
 
 export default function Experience() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLang();
   const et = t.experience;
 
@@ -25,7 +25,9 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-16">
-            <span className="text-primary font-mono text-sm">&lt;{et.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;{et.tag}&gt;
+            </span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 mb-6">
               {et.title}
             </h2>
@@ -52,7 +54,9 @@ export default function Experience() {
                           <Briefcase className="text-primary" size={24} />
                           {exp.role}
                         </h3>
-                        <p className="text-lg text-primary font-semibold mt-1">{exp.company}</p>
+                        <p className="text-lg text-primary font-semibold mt-1">
+                          {exp.company}
+                        </p>
                       </div>
                       <div className="flex items-center gap-2 text-muted-foreground mt-2 md:mt-0">
                         <Calendar size={16} />
@@ -71,10 +75,15 @@ export default function Experience() {
                           key={idx}
                           initial={{ opacity: 0, x: -20 }}
                           animate={isInView ? { opacity: 1, x: 0 } : {}}
-                          transition={{ delay: index * 0.2 + idx * 0.1, duration: 0.4 }}
+                          transition={{
+                            delay: index * 0.2 + idx * 0.1,
+                            duration: 0.4,
+                          }}
                           className="flex items-start gap-3 text-muted-foreground"
                         >
-                          <span className="text-primary mt-1.5 flex-shrink-0">▹</span>
+                          <span className="text-primary mt-1.5 flex-shrink-0">
+                            ▹
+                          </span>
                           <span>{item}</span>
                         </motion.li>
                       ))}
@@ -91,7 +100,9 @@ export default function Experience() {
             transition={{ delay: 0.8 }}
             className="mt-12"
           >
-            <span className="text-primary font-mono text-sm">&lt;/{et.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;/{et.tag}&gt;
+            </span>
           </motion.div>
         </motion.div>
       </div>

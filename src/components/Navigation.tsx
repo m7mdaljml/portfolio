@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useCallback } from "react";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
-import { useTheme } from "@/context/ThemeContext";
-import { useLang } from "@/context/LanguageContext";
-import DevLoader from "@/components/DevLoader";
+import { useTheme } from "@/context/theme-context";
+import { useLang } from "@/context/language-context";
+import DevLoader from "@/components/dev-loader";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);

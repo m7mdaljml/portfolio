@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { GraduationCap, Award } from 'lucide-react';
-import { useLang } from '@/context/LanguageContext';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { GraduationCap, Award } from "lucide-react";
+import { useLang } from "@/context/language-context";
 
 export default function Education() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLang();
   const ed = t.education;
 
@@ -23,7 +23,9 @@ export default function Education() {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-16">
-            <span className="text-primary font-mono text-sm">&lt;{ed.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;{ed.tag}&gt;
+            </span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 mb-6">
               {ed.title}
             </h2>
@@ -41,18 +43,30 @@ export default function Education() {
                 <GraduationCap className="text-primary" size={32} />
               </div>
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-foreground mb-2">{ed.degree}</h3>
-                <p className="text-lg text-primary font-semibold mb-4">{ed.university}</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  {ed.degree}
+                </h3>
+                <p className="text-lg text-primary font-semibold mb-4">
+                  {ed.university}
+                </p>
                 <div className="flex flex-wrap items-center gap-4 mb-6">
-                  <span className="text-sm text-muted-foreground font-mono">{ed.years}</span>
+                  <span className="text-sm text-muted-foreground font-mono">
+                    {ed.years}
+                  </span>
                   <div className="flex items-center gap-2 bg-primary/10 px-3 py-1 rounded">
                     <Award className="text-primary" size={16} />
-                    <span className="text-sm font-semibold text-primary">{ed.gpa}</span>
+                    <span className="text-sm font-semibold text-primary">
+                      {ed.gpa}
+                    </span>
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <p className="text-muted-foreground leading-relaxed">{ed.desc1}</p>
-                  <p className="text-muted-foreground leading-relaxed">{ed.desc2}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {ed.desc1}
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {ed.desc2}
+                  </p>
                 </div>
               </div>
             </div>
@@ -64,7 +78,9 @@ export default function Education() {
             transition={{ delay: 0.4 }}
             className="mt-12"
           >
-            <span className="text-primary font-mono text-sm">&lt;/{ed.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;/{ed.tag}&gt;
+            </span>
           </motion.div>
         </motion.div>
       </div>

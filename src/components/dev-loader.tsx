@@ -29,14 +29,14 @@ export default function DevLoader({ show, onComplete }: DevLoaderProps) {
         }
         return next;
       });
-    }, 120);
+      }, 60);
 
     const completeTimer = setTimeout(() => {
       setProgress(100);
       setTimeout(() => {
         onComplete?.();
       }, 100);
-    }, 3000);
+    }, 1000);
 
     return () => {
       clearInterval(progressInterval);

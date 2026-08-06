@@ -1,20 +1,21 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Briefcase, Trophy, Award } from 'lucide-react';
-import ProfilePhoto from '@/components/ProfilePhoto';
-import { useLang } from '@/context/LanguageContext';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Briefcase, Trophy, Award } from "lucide-react";
+import ProfilePhoto from "@/components/profile-photo";
+import FunFactsCodeEditor from "@/components/fun-facts-code-editor";
+import { useLang } from "@/context/language-context";
 
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLang();
   const at = t.about;
 
   const stats = [
-    { icon: Briefcase, label: at.yearsExp, value: '2+' },
-    { icon: Award, label: at.companies, value: '2' },
-    { icon: Trophy, label: at.competitions, value: '3' },
+    { icon: Briefcase, label: at.yearsExp, value: "2+" },
+    { icon: Award, label: at.companies, value: "2" },
+    { icon: Trophy, label: at.competitions, value: "3" },
   ];
 
   return (
@@ -30,7 +31,9 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-12">
-            <span className="text-primary font-mono text-sm">&lt;{at.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;{at.tag}&gt;
+            </span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 mb-6">
               {at.title}
             </h2>
@@ -57,11 +60,18 @@ export default function About() {
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {at.bio2start}
-                <span className="text-primary font-semibold">{at.bio2Chair}</span>
+                <span className="text-primary font-semibold">
+                  {at.bio2Chair}
+                </span>
                 {at.bio2mid}
-                <span className="text-primary font-semibold">{at.bio2acpc}</span>
+                <span className="text-primary font-semibold">
+                  {at.bio2acpc}
+                </span>
                 {at.bio2end}
-                <span className="text-primary font-semibold">{at.bio2gdsc}</span>.
+                <span className="text-primary font-semibold">
+                  {at.bio2gdsc}
+                </span>
+                .
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {at.bio3}
@@ -87,8 +97,12 @@ export default function About() {
                       <stat.icon className="text-primary" size={24} />
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      <div className="text-3xl font-bold text-primary">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {stat.label}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -99,10 +113,21 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.6 }}
+            className="mt-20"
+          >
+            <FunFactsCodeEditor />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.8 }}
             className="mt-12"
           >
-            <span className="text-primary font-mono text-sm">&lt;/{at.tag}&gt;</span>
+            <span className="text-primary font-mono text-sm">
+              &lt;/{at.tag}&gt;
+            </span>
           </motion.div>
         </motion.div>
       </div>

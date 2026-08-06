@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Trophy, Users, Code, Globe, Star } from "lucide-react";
-import { useLang } from "@/context/LanguageContext";
+import { useLang } from "@/context/language-context";
 
 const icons = [Star, Users, Code, Trophy, Globe, Code];
 const highlights = [true, false, false, true, false];

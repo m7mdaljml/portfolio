@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import { useLang } from "@/context/LanguageContext";
+import { useLang } from "@/context/language-context";
 
 export default function Footer() {
   const { t } = useLang();

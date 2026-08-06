@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { Mail, Phone, ExternalLink } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { useLang } from "@/context/LanguageContext";
+import { useLang } from "@/context/language-context";
+import ContactForm from "@/components/contact-form";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -98,6 +99,8 @@ export default function Contact() {
               </motion.a>
             ))}
           </div>
+
+          <ContactForm />
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

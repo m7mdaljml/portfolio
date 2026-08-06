@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { useTheme } from '@/context/ThemeContext';
+import { useEffect, useRef } from "react";
+import { useTheme } from "@/context/theme-context";
 
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,10 +9,10 @@ export default function ParticleBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const isDark = theme === 'dark';
+    const isDark = theme === "dark";
 
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
@@ -45,7 +45,7 @@ export default function ParticleBackground() {
 
     const animate = () => {
       // Theme-aware background
-      ctx.fillStyle = isDark ? 'hsl(222, 47%, 6%)' : 'hsl(0, 0%, 98%)';
+      ctx.fillStyle = isDark ? "hsl(222, 47%, 6%)" : "hsl(0, 0%, 98%)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle, i) => {
@@ -57,9 +57,7 @@ export default function ParticleBackground() {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = isDark
-          ? 'hsl(240, 100%, 65%)'
-          : 'hsl(240, 100%, 60%)';
+        ctx.fillStyle = isDark ? "hsl(240, 100%, 65%)" : "hsl(240, 100%, 60%)";
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -87,10 +85,10 @@ export default function ParticleBackground() {
     animate();
 
     const handleResize = () => setCanvasSize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animId);
     };
   }, [theme]);
@@ -99,7 +97,7 @@ export default function ParticleBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 -z-10 pointer-events-none"
-      style={{ opacity: theme === 'dark' ? 0.45 : 0.3 }}
+      style={{ opacity: theme === "dark" ? 0.45 : 0.3 }}
     />
   );
 }

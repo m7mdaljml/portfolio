@@ -2,10 +2,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
-import Portfolio from "@/pages/Portfolio";
 import { Route, Switch, Router as WouterRouter } from "wouter";
-import { ThemeProvider } from "@/context/ThemeContext";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/theme-context";
+import { LanguageProvider } from "@/context/language-context";
+import Portfolio from "./pages/portfolio";
 
 const queryClient = new QueryClient();
 

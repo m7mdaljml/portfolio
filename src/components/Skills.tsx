@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { useLang } from "@/context/LanguageContext";
+import { useLang } from "@/context/language-context";
 
 const skillData = [
   {

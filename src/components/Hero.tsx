@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Download, Eye, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { useLang } from "@/context/LanguageContext";
+import { useLang } from "@/context/language-context";
 
 const skills = [
   "Vue.js",

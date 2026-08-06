@@ -36,6 +36,8 @@ const translations = {
       yearsExp: "Years Experience",
       companies: "Companies",
       competitions: "Competitions",
+      funFactsTitle: "Fun Facts",
+      funFactsSubtitle: "Things you didn't know about me",
     },
     skills: {
       tag: "skills",
@@ -155,6 +157,24 @@ const translations = {
         "I'm open to new opportunities and exciting projects. Whether you're looking for a front-end engineer or a technical leader, I'd love to hear from you.",
       sendEmail: "Send an Email",
       connectLinkedIn: "Connect on LinkedIn",
+      form: {
+        title: "Send Me a Message",
+        subtitle:
+          "Fill in the form below and I'll get back to you as soon as possible.",
+        name: "Name",
+        namePlaceholder: "Your name",
+        email: "Email",
+        emailPlaceholder: "you@example.com",
+        message: "Message",
+        messagePlaceholder: "Write your message here...",
+        send: "Send Message",
+        sending: "Sending...",
+        nameRequired: "Please enter your name",
+        emailInvalid: "Please enter a valid email address",
+        messageRequired: "Please enter your message",
+        success: "Message sent successfully! I'll get back to you soon.",
+        error: "Failed to send the message. Please try again.",
+      },
     },
     github: {
       tag: "github",
@@ -168,6 +188,35 @@ const translations = {
       forks: "Forks",
       noDesc: "No description provided.",
       updated: "Updated",
+    },
+    aiChat: {
+      assistant: "Portfolio AI Assistant",
+      online: "Online",
+      startConversation: "Ask me about Mohammad",
+      typeBelow:
+        "I can answer questions about his CV, skills, experience, and projects",
+      inputPlaceholder: "Ask about Mohammad...",
+      send: "Send",
+      delete: "Delete conversation",
+      errorResponse:
+        "Sorry, something went wrong while getting an answer. Please try again later.",
+      noAnswerMessage:
+        "I couldn't find an answer to this question. If you'd like Mohammad to contact you about it, please enter your email.",
+      leaveEmail:
+        "Leave your email below and Mohammad will get back to you about your question.",
+      emailPlaceholder: "Your email address",
+      emailInvalid: "Please enter a valid email address",
+      emailSendError: "Failed to send the email. Please try again.",
+      emailSentBody: (email: string) =>
+        `Thanks! Mohammad will contact you at ${email}.`,
+      sending: "Sending...",
+      cancel: "Cancel",
+      suggestions: [
+        "What are his skills?",
+        "Tell me about his experience",
+        "How can I contact him?",
+        "His GitHub projects?",
+      ],
     },
   },
 
@@ -206,6 +255,8 @@ const translations = {
       yearsExp: "سنوات الخبرة",
       companies: "شركات",
       competitions: "مسابقات",
+      funFactsTitle: "حقائق ممتعة",
+      funFactsSubtitle: "Things you didn't know about me",
     },
     skills: {
       tag: "skills",
@@ -324,6 +375,23 @@ const translations = {
         "أنا منفتح على الفرص الجديدة والمشاريع المثيرة. سواء كنت تبحث عن مهندس واجهات أمامية أو قائد تقني، يسعدني التحدث معك.",
       sendEmail: "أرسل بريداً إلكترونياً",
       connectLinkedIn: "تواصل عبر LinkedIn",
+      form: {
+        title: "أرسل لي رسالة",
+        subtitle: "املأ النموذج أدناه وسأعود إليك في أقرب وقت ممكن.",
+        name: "الاسم",
+        namePlaceholder: "اسمك",
+        email: "البريد الإلكتروني",
+        emailPlaceholder: "you@example.com",
+        message: "الرسالة",
+        messagePlaceholder: "اكتب رسالتك هنا...",
+        send: "إرسال الرسالة",
+        sending: "جارٍ الإرسال...",
+        nameRequired: "يرجى إدخال اسمك",
+        emailInvalid: "يرجى إدخال بريد إلكتروني صحيح",
+        messageRequired: "يرجى إدخال رسالتك",
+        success: "تم إرسال الرسالة بنجاح! سأتواصل معك قريباً.",
+        error: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
+      },
     },
     github: {
       tag: "github",
@@ -337,6 +405,33 @@ const translations = {
       forks: "تفرعات",
       noDesc: "لا يوجد وصف.",
       updated: "آخر تحديث",
+    },
+    aiChat: {
+      assistant: "المساعد الذكي للموقع",
+      online: "متصل",
+      startConversation: "اسألني عن محمد",
+      typeBelow:
+        "يمكنني الإجابة عن أسئلة حول سيرته الذاتية ومهاراته وخبرته ومشاريعه",
+      inputPlaceholder: "اسأل عن محمد...",
+      send: "إرسال",
+      delete: "حذف المحادثة",
+      errorResponse:
+        "عذراً، حدث خطأ أثناء جلب الرد. يرجى المحاولة مرة أخرى لاحقاً.",
+      noAnswerMessage:
+        "لم أجد إجابة لهذا السؤال. إذا كنت ترغب في أن يتواصل معك محمد، يرجى إدخال بريدك الإلكتروني.",
+      leaveEmail: "اترك بريدك الإلكتروني أدناه وسيتواصل معك محمد بخصوص سؤالك.",
+      emailPlaceholder: "بريدك الإلكتروني",
+      emailInvalid: "يرجى إدخال بريد إلكتروني صحيح",
+      emailSendError: "فشل إرسال البريد الإلكتروني. يرجى المحاولة مرة أخرى.",
+      emailSentBody: (email: string) => `شكراً! سيتواصل معك محمد على ${email}.`,
+      sending: "جارٍ الإرسال...",
+      cancel: "إلغاء",
+      suggestions: [
+        "ما هي مهاراته؟",
+        "حدثني عن خبرته",
+        "كيف يمكنني التواصل معه؟",
+        "مشاريعه على GitHub؟",
+      ],
     },
   },
 } as const;

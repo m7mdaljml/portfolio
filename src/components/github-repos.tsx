@@ -4,7 +4,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star, GitFork, ExternalLink } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
-import { useLang } from "@/context/LanguageContext";
+import { useLang } from "@/context/language-context";
 
 interface Repo {
   id: number;

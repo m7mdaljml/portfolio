@@ -1,14 +1,16 @@
-import ParticleBackground from '@/components/ParticleBackground';
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Experience from '@/components/Experience';
-import Achievements from '@/components/Achievements';
-import Education from '@/components/Education';
-import GitHubRepos from '@/components/GitHubRepos';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import ParticleBackground from "@/components/particle-background";
+
+import AIChatWidget from "@/components/ai-chat/ai-chat-widget";
+import Navigation from "@/components/navigation";
+import Hero from "@/components/hero";
+import Skills from "@/components/skills";
+import About from "@/components/about";
+import Experience from "@/components/experience";
+import Education from "@/components/education";
+import Achievements from "@/components/achievements";
+import GitHubRepos from "@/components/github-repos";
+import Contact from "@/components/contact";
+import Footer from "@/components/footer";
 
 export default function Portfolio() {
   return (
@@ -26,6 +28,7 @@ export default function Portfolio() {
         <Contact />
       </main>
       <Footer />
+      <AIChatWidget />
     </div>
   );
 }
