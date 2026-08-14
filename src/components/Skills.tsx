@@ -7,49 +7,35 @@ const skillData = [
   {
     color: "from-primary to-primary/70",
     skills: [
-      { name: "Vue.js", level: 95 },
-      { name: "React.js", level: 80 },
-      { name: "TypeScript", level: 95 },
-      { name: "JavaScript", level: 95 },
-      { name: "HTML / CSS", level: 95 },
-      { name: "Bootstrap", level: 95 },
-      { name: "Tailwind CSS", level: 80 },
+      "Vue.js",
+      "Pinia",
+      "React.js",
+      "TypeScript",
+      "JavaScript",
+      "HTML / CSS",
+      "Bootstrap",
+      "Tailwind CSS",
     ],
   },
   {
     color: "from-violet-500 to-violet-500/70",
-    skills: [
-      { name: "REST APIs", level: 90 },
-      { name: "Axios", level: 90 },
-      { name: "Swagger / OpenAPI", level: 75 },
-      { name: "Apache", level: 75 },
-    ],
+    skills: ["REST APIs", "Axios", "Swagger / OpenAPI", "Apache"],
   },
   {
     color: "from-sky-500 to-sky-500/70",
-    skills: [
-      { name: "C++", level: 80 },
-      { name: "PHP", level: 70 },
-      { name: "MySQL", level: 75 },
-      { name: "Apache", level: 65 },
-    ],
+    skills: ["C++", "PHP", "MySQL", "Apache"],
   },
   {
     color: "from-emerald-500 to-emerald-500/70",
-    skills: [
-      { name: "Git / GitHub", level: 90 },
-      { name: "Node.js", level: 80 },
-      { name: "Vite", level: 85 },
-      { name: "Microsoft Office", level: 85 },
-    ],
+    skills: ["Git / GitHub", "Node.js", "Vite", "Microsoft Office"],
   },
   {
     color: "from-amber-500 to-amber-500/70",
     skills: [
-      { name: "Problem Solving", level: 95 },
-      { name: "Time Management", level: 90 },
-      { name: "Fast & Self Learning", level: 95 },
-      { name: "Presentation", level: 85 },
+      "Problem Solving",
+      "Time Management",
+      "Fast & Self Learning",
+      "Presentation",
     ],
   },
 ];
@@ -101,39 +87,20 @@ export default function Skills() {
                 <h3 className="text-base font-bold mb-5 text-primary font-mono">
                   {category.title}
                 </h3>
-                <div className="space-y-4">
+                <div className="flex flex-wrap gap-2.5">
                   {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{
                         delay: categoryIndex * 0.1 + skillIndex * 0.05,
                         duration: 0.4,
                       }}
+                      className={`px-3.5 py-1.5 text-sm font-medium text-foreground bg-gradient-to-r ${category.color} rounded-full border border-border`}
                     >
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-sm font-medium text-foreground">
-                          {skill.name}
-                        </span>
-                        <span className="text-xs font-mono text-muted-foreground">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={isInView ? { width: `${skill.level}%` } : {}}
-                          transition={{
-                            delay:
-                              categoryIndex * 0.1 + skillIndex * 0.05 + 0.2,
-                            duration: 0.8,
-                            ease: "easeOut",
-                          }}
-                          className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
-                        />
-                      </div>
-                    </motion.div>
+                      {skill}
+                    </motion.span>
                   ))}
                 </div>
               </motion.div>
