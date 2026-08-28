@@ -18,7 +18,7 @@ const skillData = [
     ],
   },
   {
-    color: "from-violet-500 to-violet-500/70",
+    color: "from-blue-500 to-blue-500/70",
     skills: ["REST APIs", "Axios", "Swagger / OpenAPI", "Apache"],
   },
   {

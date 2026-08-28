@@ -88,17 +88,17 @@
   --sidebar: 0 0% 100%;
   --sidebar-foreground: 222 47% 11%;
   --sidebar-border: 214 32% 88%;
-  --sidebar-primary: 240 100% 60%;
+  --sidebar-primary: 210 100% 60%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 100% 60%;
+  --sidebar-accent: 210 100% 60%;
   --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-ring: 240 100% 60%;
+  --sidebar-ring: 210 100% 60%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
   --popover-border: 214 32% 88%;
 
-  --primary: 240 100% 60%;
+  --primary: 210 100% 60%;
   --primary-foreground: 0 0% 100%;
 
   --secondary: 214 32% 93%;
@@ -107,17 +107,17 @@
   --muted: 214 32% 93%;
   --muted-foreground: 215 16% 47%;
 
-  --accent: 240 100% 60%;
+  --accent: 210 100% 60%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
   --input: 214 32% 88%;
-  --ring: 240 100% 60%;
+  --ring: 210 100% 60%;
 
-  --chart-1: 240 100% 60%;
-  --chart-2: 280 85% 65%;
+  --chart-1: 210 100% 60%;
+  --chart-2: 225 90% 60%;
   --chart-3: 200 90% 50%;
   --chart-4: 160 60% 45%;
   --chart-5: 340 75% 55%;
@@ -127,24 +127,24 @@
   --app-font-mono: 'JetBrains Mono', monospace;
   --radius: 0.5rem;
   
-  --shadow-2xs: 0px 2px 0px 0px hsl(240 100% 65% / 0);
-  --shadow-xs: 0px 2px 0px 0px hsl(240 100% 65% / 0);
+  --shadow-2xs: 0px 2px 0px 0px hsl(210 100% 65% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(210 100% 65% / 0);
   --shadow-sm:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 1px 2px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 1px 2px -1px hsl(210 100% 65% / 0);
   --shadow:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 1px 2px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 1px 2px -1px hsl(210 100% 65% / 0);
   --shadow-md:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 2px 4px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 2px 4px -1px hsl(210 100% 65% / 0);
   --shadow-lg:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 4px 6px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 4px 6px -1px hsl(210 100% 65% / 0);
   --shadow-xl:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 8px 10px -1px hsl(240 100% 65% / 0);
-  --shadow-2xl: 0px 2px 0px 0px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 8px 10px -1px hsl(210 100% 65% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(210 100% 65% / 0);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
@@ -212,17 +212,17 @@
   --sidebar: 222 47% 9%;
   --sidebar-foreground: 210 40% 96%;
   --sidebar-border: 217 33% 17%;
-  --sidebar-primary: 240 100% 65%;
+  --sidebar-primary: 210 100% 65%;
   --sidebar-primary-foreground: 210 40% 96%;
-  --sidebar-accent: 240 100% 65%;
+  --sidebar-accent: 210 100% 65%;
   --sidebar-accent-foreground: 210 40% 96%;
-  --sidebar-ring: 240 100% 65%;
+  --sidebar-ring: 210 100% 65%;
 
   --popover: 222 47% 9%;
   --popover-foreground: 210 40% 96%;
   --popover-border: 217 33% 17%;
 
-  --primary: 240 100% 65%;
+  --primary: 210 100% 65%;
   --primary-foreground: 0 0% 100%;
 
   --secondary: 217 33% 17%;
@@ -231,39 +231,39 @@
   --muted: 217 33% 17%;
   --muted-foreground: 215 20% 65%;
 
-  --accent: 240 100% 65%;
+  --accent: 210 100% 65%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
   --input: 217 33% 24%;
-  --ring: 240 100% 65%;
+  --ring: 210 100% 65%;
 
-  --chart-1: 240 100% 65%;
-  --chart-2: 280 100% 70%;
+  --chart-1: 210 100% 65%;
+  --chart-2: 220 100% 68%;
   --chart-3: 200 100% 60%;
   --chart-4: 160 60% 50%;
   --chart-5: 340 75% 55%;
 
-  --shadow-2xs: 0px 2px 0px 0px hsl(240 100% 65% / 0);
-  --shadow-xs: 0px 2px 0px 0px hsl(240 100% 65% / 0);
+  --shadow-2xs: 0px 2px 0px 0px hsl(210 100% 65% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(210 100% 65% / 0);
   --shadow-sm:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 1px 2px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 1px 2px -1px hsl(210 100% 65% / 0);
   --shadow:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 1px 2px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 1px 2px -1px hsl(210 100% 65% / 0);
   --shadow-md:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 2px 4px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 2px 4px -1px hsl(210 100% 65% / 0);
   --shadow-lg:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 4px 6px -1px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 4px 6px -1px hsl(210 100% 65% / 0);
   --shadow-xl:
-    0px 2px 0px 0px hsl(240 100% 65% / 0),
-    0px 8px 10px -1px hsl(240 100% 65% / 0);
-  --shadow-2xl: 0px 2px 0px 0px hsl(240 100% 65% / 0);
+    0px 2px 0px 0px hsl(210 100% 65% / 0),
+    0px 8px 10px -1px hsl(210 100% 65% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(210 100% 65% / 0);
 }
 
 @layer base {
@@ -353,10 +353,10 @@
 /* Custom animations and effects */
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(240 100% 65% / 0.3), 0 0 40px hsl(240 100% 65% / 0.2);
+    box-shadow: 0 0 20px hsl(210 100% 65% / 0.3), 0 0 40px hsl(210 100% 65% / 0.2);
   }
   50% {
-    box-shadow: 0 0 30px hsl(240 100% 65% / 0.5), 0 0 60px hsl(240 100% 65% / 0.3);
+    box-shadow: 0 0 30px hsl(210 100% 65% / 0.5), 0 0 60px hsl(210 100% 65% / 0.3);
   }
 }
 
@@ -370,10 +370,10 @@
 }
 
 .glow-text {
-  text-shadow: 0 0 20px hsl(240 100% 65% / 0.5);
+  text-shadow: 0 0 20px hsl(210 100% 65% / 0.5);
 }
 
 .glow-border {
-  border-color: hsl(240 100% 65%);
-  box-shadow: 0 0 10px hsl(240 100% 65% / 0.3);
+  border-color: hsl(210 100% 65%);
+  box-shadow: 0 0 10px hsl(210 100% 65% / 0.3);
 }

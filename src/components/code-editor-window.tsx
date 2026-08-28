@@ -18,7 +18,7 @@ export interface Tok {
 }
 
 export const tokenClass: Record<TokenType, string> = {
-  keyword: "text-violet-500 dark:text-violet-400 font-medium",
+  keyword: "text-blue-600 dark:text-blue-400 font-medium",
   string: "text-emerald-600 dark:text-emerald-400",
   property: "text-sky-600 dark:text-sky-400",
   comment: "text-muted-foreground italic",

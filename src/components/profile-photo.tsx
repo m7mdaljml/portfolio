@@ -15,7 +15,7 @@ export default function ProfilePhoto() {
         className="absolute w-72 h-72 rounded-full"
         style={{
           background:
-            "conic-gradient(from 0deg, transparent 70%, hsl(240 100% 65% / 0.8) 100%)",
+            "conic-gradient(from 0deg, transparent 70%, hsl(210 100% 65% / 0.8) 100%)",
         }}
       />
 
@@ -23,15 +23,15 @@ export default function ProfilePhoto() {
         className="absolute w-64 h-64 rounded-full"
         style={{
           boxShadow:
-            "0 0 40px hsl(240 100% 65% / 0.3), 0 0 80px hsl(240 100% 65% / 0.15)",
+            "0 0 40px hsl(210 100% 65% / 0.3), 0 0 80px hsl(210 100% 65% / 0.15)",
           background:
-            "radial-gradient(circle, hsl(240 100% 65% / 0.1) 0%, transparent 70%)",
+            "radial-gradient(circle, hsl(210 100% 65% / 0.1) 0%, transparent 70%)",
         }}
       />
 
       <div
         className="relative w-60 h-60 rounded-full overflow-hidden border-2 z-10"
-        style={{ borderColor: "hsl(240 100% 65% / 0.6)" }}
+        style={{ borderColor: "hsl(210 100% 65% / 0.6)" }}
       >
         <img
           src={profileImg}
