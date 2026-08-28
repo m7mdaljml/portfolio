@@ -5,7 +5,7 @@ This website is the personal portfolio of Mohammad Aljamal, a Front-End Engineer
 ## Contact information
 - Email: mohammadaljamal121@gmail.com
 - Phone: +962 786 116 835
-- LinkedIn: https://linkedin.com/in/mohammad-aljamal
+- LinkedIn: https://linkedin.com/in/mohammad-aljamal1
 - GitHub: https://github.com/M7mdaljml
 - Location: Jordan
 
@@ -64,7 +64,7 @@ The portfolio is a single-page website with these sections: Hero (home), About, 
 ## معلومات التواصل
 - البريد الإلكتروني: mohammadaljamal121@gmail.com
 - الهاتف: +962 786 116 835
-- LinkedIn: https://linkedin.com/in/mohammad-aljamal
+- LinkedIn: https://linkedin.com/in/mohammad-aljamal1
 - GitHub: https://github.com/M7mdaljml
 - الموقع: الأردن
 

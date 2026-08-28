@@ -36,7 +36,7 @@ export default function Contact() {
       icon: FiLinkedin,
       label: "LinkedIn",
       value: "Mohammad Aljamal",
-      href: "https://linkedin.com/in/mohammad-aljamal",
+      href: "https://linkedin.com/in/mohammad-aljamal1",
     },
   ];
 
@@ -130,7 +130,7 @@ export default function Contact() {
                 asChild
               >
                 <a
-                  href="https://linkedin.com/in/mohammad-aljamal"
+                  href="https://linkedin.com/in/mohammad-aljamal1"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

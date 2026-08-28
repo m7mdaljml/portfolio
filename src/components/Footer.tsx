@@ -27,7 +27,7 @@ export default function Footer() {
               <FiGithub size={20} />
             </a>
             <a
-              href="https://linkedin.com/in/mohammad-aljamal"
+              href="https://linkedin.com/in/mohammad-aljamal1"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-muted-foreground hover:text-primary transition-colors"
