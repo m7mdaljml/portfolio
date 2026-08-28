@@ -29,11 +29,11 @@ He thrives on translating complex business requirements into elegant, responsive
    - Optimized database queries and API endpoints for better performance.
 
 ## Skills (Technical Arsenal)
-- Core Front-End: Vue.js (95%), React.js (80%), TypeScript (95%), JavaScript (95%), HTML/CSS (95%), Bootstrap (95%), Tailwind CSS (80%).
-- API & Data Integration: REST APIs (90%), Axios (90%), Swagger / OpenAPI (75%), Apache (75%).
-- Backend & Programming: C++ (80%), PHP (70%), MySQL (75%), Apache (65%).
-- Tools & Environment: Git / GitHub (90%), Node.js (80%), Vite (85%), Microsoft Office (85%).
-- Professional Skills: Problem Solving (95%), Time Management (90%), Fast & Self Learning (95%), Presentation (85%).
+- Core Front-End: Vue.js, Pinia, React.js, TypeScript, JavaScript, HTML/CSS, Bootstrap, Tailwind CSS.
+- API & Data Integration: REST APIs, Axios, Swagger / OpenAPI, Apache.
+- Backend & Programming: C++, PHP, MySQL, Apache.
+- Tools & Environment: Git / GitHub, Node.js, Vite, Microsoft Office.
+- Professional Skills: Problem Solving, Time Management, Fast & Self Learning, Presentation.
 
 ## Education (Academic Foundation)
 - Bachelor of Computer Science, Mutah University, Jordan (2019 – 2023).
@@ -88,11 +88,11 @@ The portfolio is a single-page website with these sections: Hero (home), About, 
    - تحسين استعلامات قاعدة البيانات ونقاط نهاية API للأداء الأفضل.
 
 ## المهارات (الترسانة التقنية)
-- واجهات أمامية أساسية: Vue.js (95%)، React.js (80%)، TypeScript (95%)، JavaScript (95%)، HTML/CSS (95%)، Bootstrap (95%)، Tailwind CSS (80%).
-- تكامل API والبيانات: REST APIs (90%)، Axios (90%)، Swagger / OpenAPI (75%)، Apache (75%).
-- الخلفية والبرمجة: C++ (80%)، PHP (70%)، MySQL (75%)، Apache (65%).
-- الأدوات والبيئة: Git / GitHub (90%)، Node.js (80%)، Vite (85%)، Microsoft Office (85%).
-- المهارات المهنية: حل المشكلات (95%)، إدارة الوقت (90%)، التعلّم السريع والذاتي (95%)، العرض والتقديم (85%).
+- واجهات أمامية أساسية: Vue.js، Pinia، React.js، TypeScript، JavaScript، HTML/CSS، Bootstrap، Tailwind CSS.
+- تكامل API والبيانات: REST APIs، Axios، Swagger / OpenAPI، Apache.
+- الخلفية والبرمجة: C++، PHP، MySQL، Apache.
+- الأدوات والبيئة: Git / GitHub، Node.js، Vite، Microsoft Office.
+- المهارات المهنية: حل المشكلات، إدارة الوقت، التعلّم السريع والذاتي، العرض والتقديم.
 
 ## التعليم (الأساس الأكاديمي)
 - بكالوريوس علوم الحاسوب، جامعة مؤتة، الأردن (2019 – 2023).
