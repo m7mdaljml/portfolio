@@ -2,6 +2,7 @@ export type Lang = "en" | "ar";
 
 const translations = {
   en: {
+    visitSite: "Visit the Site",
     nav: {
       about: "About",
       skills: "Skills",
@@ -432,6 +433,7 @@ const translations = {
   },
 
   ar: {
+    visitSite: "زيارة الموقع",
     nav: {
       about: "عن",
       skills: "المهارات",

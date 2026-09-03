@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, LogIn, ShieldAlert, Menu, X, Sun, Moon, Globe } from "lucide-react";
+import { Lock, LogIn, ShieldAlert, Menu, X, Sun, Moon, Globe, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -50,7 +50,13 @@ export default function AdminLogin({ onSuccess }: { onSuccess: () => void }) {
             </div>
             <span className="font-bold">{login.brand}</span>
           </div>
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex items-center gap-2">
+            <Button asChild variant="ghost" size="sm" className="gap-1.5 text-muted-foreground">
+              <a href="/">
+                {t.visitSite}
+                <ArrowRight size={14} />
+              </a>
+            </Button>
             <AdminNav />
           </div>
           <div className="lg:hidden">
@@ -73,6 +79,14 @@ export default function AdminLogin({ onSuccess }: { onSuccess: () => void }) {
               className="lg:hidden border-t border-border"
             >
               <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
+                <a
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
+                >
+                  <ArrowRight size={16} />
+                  {t.visitSite}
+                </a>
                 <button
                   onClick={() => {
                     toggleLang();
