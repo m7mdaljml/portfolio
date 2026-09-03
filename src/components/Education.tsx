@@ -3,12 +3,14 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { GraduationCap, Award } from "lucide-react";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 
 export default function Education() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLang();
-  const ed = t.education;
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const ed = getMergedTranslations(lang).education;
 
   return (
     <section

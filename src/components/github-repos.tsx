@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Star, GitFork, ExternalLink } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 
 interface Repo {
   id: number;
@@ -34,8 +35,9 @@ const LANG_COLORS: Record<string, string> = {
 export default function GitHubRepos() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLang();
-  const gt = t.github;
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const gt = getMergedTranslations(lang).github;
 
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -116,11 +118,8 @@ export default function GitHubRepos() {
             <>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {repos.map((repo, index) => (
-                  <motion.a
+                  <motion.div
                     key={repo.id}
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: index * 0.08, duration: 0.5 }}
@@ -128,10 +127,15 @@ export default function GitHubRepos() {
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center gap-2 min-w-0">
-                        <FiGithub size={16} className="text-primary" />
-                        <span className="font-semibold text-foreground truncate group-hover:text-primary transition-colors">
+                        <FiGithub size={16} className="text-primary shrink-0" />
+                        <a
+                          href={repo.html_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold text-foreground truncate group-hover:text-primary transition-colors min-w-0"
+                        >
                           {repo.name}
-                        </span>
+                        </a>
                       </div>
                       <ExternalLink
                         size={14}
@@ -184,7 +188,7 @@ export default function GitHubRepos() {
                         {formatDate(repo.updated_at)}
                       </span>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 ))}
               </div>
 

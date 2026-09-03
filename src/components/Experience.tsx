@@ -3,14 +3,16 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase, Calendar } from "lucide-react";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 
 const highlights = [true, false];
 
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLang();
-  const et = t.experience;
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const et = getMergedTranslations(lang).experience;
 
   return (
     <section

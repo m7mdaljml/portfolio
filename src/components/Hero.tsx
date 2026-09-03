@@ -3,6 +3,10 @@ import { Download, Eye, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
+
+const CV_URL = "/Mohammad-Aljamal-CV.pdf";
+const CV_FILENAME = "Mohammad-Aljamal-CV.pdf";
 
 const skills = [
   "Vue.js",
@@ -17,7 +21,11 @@ const skills = [
 
 export default function Hero() {
   const [currentSkill, setCurrentSkill] = useState(0);
-  const { lang, t } = useLang();
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const t = getMergedTranslations(lang).hero;
+  const cvUrl = CV_URL;
+  const cvFilename = CV_FILENAME;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,9 +67,9 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight"
           >
-            {t.hero.firstname}
+            {t.firstname}
             <br />
-            <span className="glow-text">{t.hero.lastname}</span>
+            <span className="glow-text">{t.lastname}</span>
           </motion.h1>
 
           <motion.div
@@ -70,7 +78,7 @@ export default function Hero() {
             transition={{ delay: 0.5 }}
             className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 font-medium"
           >
-            {t.hero.role}
+            {t.role}
           </motion.div>
 
           <motion.div
@@ -97,7 +105,7 @@ export default function Hero() {
             transition={{ delay: 0.9 }}
             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            {t.hero.tagline}
+            {t.tagline}
           </motion.p>
 
           <motion.div
@@ -113,7 +121,7 @@ export default function Hero() {
               data-testid="hero-cta-contact"
             >
               <Mail size={20} />
-              {t.hero.contactMe}
+              {t.contactMe}
             </Button>
             <Button
               size="lg"
@@ -123,7 +131,7 @@ export default function Hero() {
               data-testid="hero-cta-work"
             >
               <Eye size={20} />
-              {t.hero.viewWork}
+              {t.viewWork}
             </Button>
             <Button
               size="lg"
@@ -133,11 +141,11 @@ export default function Hero() {
               data-testid="hero-cta-cv"
             >
               <a
-                href="/Mohammad-Aljamal-CV.pdf"
-                download="Mohammad-Aljamal-CV.pdf"
+                href={cvUrl}
+                download={cvFilename}
               >
                 <Download size={20} />
-                {t.hero.downloadCV}
+                {t.downloadCV}
               </a>
             </Button>
           </motion.div>

@@ -1,34 +1,37 @@
 import ParticleBackground from "@/components/particle-background";
 
 import AIChatWidget from "@/components/ai-chat/ai-chat-widget";
-import Navigation from "@/components/navigation";
-import Hero from "@/components/hero";
-import Skills from "@/components/skills";
-import About from "@/components/about";
-import Experience from "@/components/experience";
-import Education from "@/components/education";
-import Achievements from "@/components/achievements";
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import Skills from "@/components/Skills";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Achievements from "@/components/Achievements";
 import GitHubRepos from "@/components/github-repos";
-import Contact from "@/components/contact";
+import Contact from "@/components/Contact";
 import Footer from "@/components/footer";
+import { useContent } from "@/context/content-context";
 
 export default function Portfolio() {
+  const { flags } = useContent();
+
   return (
     <div className="relative min-h-screen">
       <ParticleBackground />
       <Navigation />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Achievements />
-        <Education />
-        <GitHubRepos />
-        <Contact />
+        {flags.hero && <Hero />}
+        {flags.about && <About />}
+        {flags.skills && <Skills />}
+        {flags.experience && <Experience />}
+        {flags.achievements && <Achievements />}
+        {flags.education && <Education />}
+        {flags.github && <GitHubRepos />}
+        {flags.contact && <Contact />}
       </main>
       <Footer />
-      <AIChatWidget />
+      {flags.aiChat && <AIChatWidget />}
     </div>
   );
 }

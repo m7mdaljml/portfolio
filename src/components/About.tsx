@@ -5,17 +5,19 @@ import { Briefcase, Trophy, Award } from "lucide-react";
 import ProfilePhoto from "@/components/profile-photo";
 import FunFactsCodeEditor from "@/components/fun-facts-code-editor";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLang();
-  const at = t.about;
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const at = getMergedTranslations(lang).about;
 
   const stats = [
-    { icon: Briefcase, label: at.yearsExp, value: "2+" },
-    { icon: Award, label: at.companies, value: "2" },
-    { icon: Trophy, label: at.competitions, value: "3" },
+    { icon: Briefcase, label: at.yearsExp, value: at.yearsExpValue },
+    { icon: Award, label: at.companies, value: at.companiesValue },
+    { icon: Trophy, label: at.competitions, value: at.competitionsValue },
   ];
 
   return (

@@ -5,13 +5,15 @@ import { Mail, Phone, ExternalLink } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 import ContactForm from "@/components/contact-form";
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLang();
-  const ct = t.contact;
+  const { lang } = useLang();
+  const { flags, getMergedTranslations } = useContent();
+  const ct = getMergedTranslations(lang).contact;
 
   const contactMethods = [
     {
@@ -100,7 +102,7 @@ export default function Contact() {
             ))}
           </div>
 
-          <ContactForm />
+          {flags.contactForm && <ContactForm />}
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

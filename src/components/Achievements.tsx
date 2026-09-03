@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Trophy, Users, Code, Globe, Star } from "lucide-react";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 
 const icons = [Star, Users, Code, Trophy, Globe, Code];
 const highlights = [true, false, false, true, false];
@@ -10,8 +11,9 @@ const highlights = [true, false, false, true, false];
 export default function Achievements() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLang();
-  const at = t.achievements;
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const at = getMergedTranslations(lang).achievements;
 
   return (
     <section

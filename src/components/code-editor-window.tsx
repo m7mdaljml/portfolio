@@ -88,36 +88,33 @@ export default function CodeEditorWindow({
           </div>
         </div>
 
-        <div className="relative flex text-sm font-mono leading-6 overflow-x-auto bg-card py-3">
-          <div className="sticky left-0 z-10 select-none pr-4 pl-4 text-right text-muted-foreground/60 bg-card">
-            {lines.map((_, i) => (
-              <div key={i} className="leading-6 min-w-[2ch]">
+        <div className="relative bg-card py-3 text-sm font-mono leading-6 overflow-hidden">
+          {lines.map((line, i) => (
+            <div key={i} className="flex">
+              <div className="w-12 shrink-0 select-none pr-3 pl-4 text-right text-muted-foreground/60">
                 {i + 1}
               </div>
-            ))}
-          </div>
-          <div className="pr-6">
-            {lines.map((line, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.25 + i * 0.045, duration: 0.3 }}
-                className="whitespace-pre leading-6"
-              >
-                {line.length === 0
-                  ? "\u00A0"
-                  : line.map((tok, j) => (
-                      <span key={j} className={tokenClass[tok.t]}>
-                        {tok.text}
-                      </span>
-                    ))}
-                {i === lines.length - 1 && (
-                  <span className="inline-block h-[1.05em] ml-0.5 bg-primary animate-pulse" />
-                )}
-              </motion.div>
-            ))}
-          </div>
+              <div className="min-w-0 flex-1 pr-6">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ delay: 0.25 + i * 0.045, duration: 0.3 }}
+                  className="whitespace-pre-wrap break-words leading-6"
+                >
+                  {line.length === 0
+                    ? "\u00A0"
+                    : line.map((tok, j) => (
+                        <span key={j} className={tokenClass[tok.t]}>
+                          {tok.text}
+                        </span>
+                      ))}
+                  {i === lines.length - 1 && (
+                    <span className="inline-block h-[1.05em] ml-0.5 bg-primary animate-pulse" />
+                  )}
+                </motion.div>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="flex items-center justify-between px-4 py-1.5 text-[11px] font-mono text-muted-foreground bg-muted/50 border-t border-border">

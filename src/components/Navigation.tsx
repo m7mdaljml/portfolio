@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
+import { Link } from "wouter";
 import { useTheme } from "@/context/theme-context";
 import { useLang } from "@/context/language-context";
 import DevLoader from "@/components/dev-loader";
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -24,12 +24,6 @@ export default function Navigation() {
 
   const handleLoaderComplete = useCallback(() => {
     setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -55,11 +49,7 @@ export default function Navigation() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -73,7 +63,7 @@ export default function Navigation() {
               &lt;MA /&gt;
             </motion.button>
 
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-4">
               {navItems.map((item) => (
                 <motion.button
                   key={item.id}
@@ -112,27 +102,11 @@ export default function Navigation() {
               </motion.button>
             </div>
 
-            <div className="md:hidden flex items-center gap-2">
-              <button
-                onClick={handleToggleLang}
-                className="px-2.5 py-1 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all text-xs font-bold d-flex"
-                aria-label="Toggle language"
-              >
-                <span className="flex items-center gap-2">
-                  {lang === "en" ? "ع" : "EN"}
-                  <Globe size={18} />
-                </span>
-              </button>
-              <button
-                onClick={handleToggleTheme}
-                className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-              </button>
+            <div className="lg:hidden flex items-center gap-2">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-foreground"
+                className="p-2 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-all"
+                aria-label="Toggle menu"
                 data-testid="nav-mobile-toggle"
               >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -146,14 +120,39 @@ export default function Navigation() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
+            className="lg:hidden bg-background/95 backdrop-blur-lg border-b border-border"
           >
-            <div className="px-4 py-4 space-y-3">
+            <div className="px-4 py-4 space-y-1">
+              <div className="flex flex-col rounded-lg border border-border overflow-hidden">
+                <button
+                  onClick={() => {
+                    handleToggleLang();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted transition-colors text-start"
+                  data-testid="nav-mobile-lang"
+                >
+                  <Globe size={16} />
+                  {lang === "en" ? "العربية" : "English"}
+                </button>
+                <button
+                  onClick={() => {
+                    handleToggleTheme();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted transition-colors text-start border-t border-border"
+                  data-testid="nav-mobile-theme"
+                >
+                  {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+                  {theme === "dark" ? "Light mode" : "Dark mode"}
+                </button>
+              </div>
+              <div className="my-2 border-t border-border" />
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-start text-muted-foreground hover:text-primary transition-colors py-2"
+                  className="block w-full text-start text-muted-foreground hover:text-primary transition-colors py-2.5"
                   data-testid={`nav-mobile-${item.id}`}
                 >
                   {item.label}

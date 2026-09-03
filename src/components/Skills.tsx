@@ -2,53 +2,44 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 
-const skillData = [
-  {
-    color: "from-primary to-primary/70",
-    skills: [
-      "Vue.js",
-      "Pinia",
-      "React.js",
-      "TypeScript",
-      "JavaScript",
-      "HTML / CSS",
-      "Bootstrap",
-      "Tailwind CSS",
-    ],
-  },
-  {
-    color: "from-blue-500 to-blue-500/70",
-    skills: ["REST APIs", "Axios", "Swagger / OpenAPI", "Apache"],
-  },
-  {
-    color: "from-sky-500 to-sky-500/70",
-    skills: ["C++", "PHP", "MySQL", "Apache"],
-  },
-  {
-    color: "from-emerald-500 to-emerald-500/70",
-    skills: ["Git / GitHub", "Node.js", "Vite", "Microsoft Office"],
-  },
-  {
-    color: "from-amber-500 to-amber-500/70",
-    skills: [
-      "Problem Solving",
-      "Time Management",
-      "Fast & Self Learning",
-      "Presentation",
-    ],
-  },
+const COLORS = [
+  "from-primary to-primary/70",
+  "from-blue-500 to-blue-500/70",
+  "from-sky-500 to-sky-500/70",
+  "from-emerald-500 to-emerald-500/70",
+  "from-amber-500 to-amber-500/70",
+];
+
+const DEFAULT_SKILL_BLOCKS: string[][] = [
+  ["Vue.js", "Pinia", "React.js", "TypeScript", "JavaScript", "HTML / CSS", "Bootstrap", "Tailwind CSS"],
+  ["REST APIs", "Axios", "Swagger / OpenAPI", "Apache"],
+  ["C++", "PHP", "MySQL", "Apache"],
+  ["Git / GitHub", "Node.js", "Vite", "Microsoft Office"],
+  ["Problem Solving", "Time Management", "Fast & Self Learning", "Presentation"],
 ];
 
 export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLang();
-  const st = t.skills;
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const st = getMergedTranslations(lang).skills as unknown as {
+    tag: string;
+    title: string;
+    subtitle: string;
+    categories: string[];
+    blocks?: string[][];
+  };
 
-  const categories = skillData.map((cat, i) => ({
-    ...cat,
-    title: st.categories[i],
+  const blocks =
+    st.blocks && st.blocks.length ? st.blocks : DEFAULT_SKILL_BLOCKS;
+
+  const categories = blocks.map((skillBlock, i) => ({
+    color: COLORS[i % COLORS.length],
+    title: st.categories[i] ?? `Category ${i + 1}`,
+    skills: skillBlock,
   }));
 
   return (

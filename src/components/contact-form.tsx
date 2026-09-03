@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { sendContactForm } from "@/services/contact-email";
 import { useLang } from "@/context/language-context";
+import { useContent } from "@/context/content-context";
 import {
   formatTimer,
   getRemainingCooldown,
@@ -17,8 +18,9 @@ import {
 type Status = "idle" | "sending" | "success" | "error";
 
 const ContactForm = () => {
-  const { t } = useLang();
-  const ft = t.contact.form;
+  const { lang } = useLang();
+  const { getMergedTranslations } = useContent();
+  const ft = getMergedTranslations(lang).contact.form;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
