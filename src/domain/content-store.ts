@@ -127,6 +127,7 @@ export type LangContent = {
 export interface SiteContentState {
   flags: Flags;
   content: LangContent;
+  knowledgeBase?: string;
 }
 
 export const EMPTY_CONTENT: LangContent = {

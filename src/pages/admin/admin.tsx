@@ -28,6 +28,7 @@ import AdminLogin from "./admin-login";
 import AdminNav from "./admin-nav";
 import SectionToggles from "./section-toggles";
 import ContentEditors from "./editors/content-editors";
+import KnowledgeBaseEditor from "./editors/knowledge-base-editor";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -257,12 +258,16 @@ export default function Admin() {
             <TabsList className="mb-4">
               <TabsTrigger value="sections">{admin.tabs.sectionsLabel}</TabsTrigger>
               <TabsTrigger value="content">{admin.tabs.content}</TabsTrigger>
+              <TabsTrigger value="knowledgeBase">{admin.tabs.knowledgeBase}</TabsTrigger>
             </TabsList>
             <TabsContent value="sections">
               <SectionToggles />
             </TabsContent>
             <TabsContent value="content">
               <ContentEditors />
+            </TabsContent>
+            <TabsContent value="knowledgeBase">
+              <KnowledgeBaseEditor />
             </TabsContent>
           </Tabs>
         )}

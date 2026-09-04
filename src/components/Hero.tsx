@@ -10,10 +10,11 @@ const CV_FILENAME = "Mohammad-Aljamal-CV.pdf";
 
 const skills = [
   "Vue.js",
-  "TypeScript",
-  "React",
+  "React.js",
   "JavaScript",
+  "TypeScript",
   "Tailwind CSS",
+  "Bootstrap",
   "REST APIs",
   "Git",
   "Problem Solving",
@@ -140,10 +141,7 @@ export default function Hero() {
               asChild
               data-testid="hero-cta-cv"
             >
-              <a
-                href={cvUrl}
-                download={cvFilename}
-              >
+              <a href={cvUrl} download={cvFilename}>
                 <Download size={20} />
                 {t.downloadCV}
               </a>

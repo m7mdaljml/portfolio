@@ -156,3 +156,39 @@ export function subscribeToFirebase(
     },
   );
 }
+
+const KB_DOC_ID = "knowledge-base";
+
+export async function loadKnowledgeBase(): Promise<string | null> {
+  const dbInstance = getDb();
+  if (!dbInstance) return null;
+  try {
+    const snap = await getDoc(doc(dbInstance, COLLECTION, KB_DOC_ID));
+    if (snap.exists()) {
+      const data = snap.data();
+      return typeof data.content === "string" ? data.content : null;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+export async function saveKnowledgeBase(content: string): Promise<SaveResult> {
+  const dbInstance = getDb();
+  if (!dbInstance) {
+    return {
+      ok: false,
+      reason: "not-configured",
+      message: "Firebase is not configured in your .env",
+    };
+  }
+  try {
+    await setDoc(doc(dbInstance, COLLECTION, KB_DOC_ID), { content }, { merge: true });
+    return { ok: true };
+  } catch (err) {
+    const message =
+      err instanceof Error ? err.message : "Unknown Firestore write error";
+    return { ok: false, reason: "error", message };
+  }
+}

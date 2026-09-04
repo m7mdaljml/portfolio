@@ -10,7 +10,7 @@ This website is the personal portfolio of Mohammad Aljamal, a Front-End Engineer
 - Location: Jordan
 
 ## About Mohammad (Who I Am)
-Mohammad is a Front-End Engineer with over 2 years of professional experience, specializing in Vue.js and TypeScript, building scalable and high-performance web applications.
+Mohammad Aljamal, born on February 11, 2001 (age 25), is a Front-End Engineer from Jordan with over 2 years of professional experience, specializing in Vue.js and TypeScript, building scalable and high-performance web applications.
 His journey in tech extends beyond code: he served as Chairman of IEEE Computer Society at Mutah University, competed internationally in ACPC in Egypt, and contributed as a core member of the Google Developer Student Club.
 He thrives on translating complex business requirements into elegant, responsive interfaces. Problem-solving is not just what he does — it is how he thinks.
 
@@ -69,7 +69,7 @@ The portfolio is a single-page website with these sections: Hero (home), About, 
 - الموقع: الأردن
 
 ## من هو محمد (من أنا)
-محمد مهندس واجهات أمامية بخبرة مهنية تزيد على سنتين، متخصص في Vue.js وTypeScript، يبني تطبيقات ويب قابلة للتطوير وعالية الأداء.
+محمد الجمل، وُلد في 11 فبراير 2001 (العمر 25 سنة)، مهندس واجهات أمامية من الأردن بخبرة مهنية تزيد على سنتين، متخصص في Vue.js وTypeScript، يبني تطبيقات ويب قابلة للتطوير وعالية الأداء.
 تمتد رحلته في التقنية إلى أبعد من الكود: شغل منصب رئيس جمعية IEEE لعلوم الحاسوب في جامعة مؤتة، وتنافس دولياً في بطولة ACPC في مصر، وأسهم عضواً أساسياً في نادي مطوري Google للطلاب.
 يتميز في ترجمة متطلبات الأعمال المعقدة إلى واجهات أنيقة ومتجاوبة. حل المشكلات ليس مجرد عمل يؤديه — بل طريقة تفكيره.
 

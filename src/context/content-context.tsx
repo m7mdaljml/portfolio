@@ -20,17 +20,21 @@ import {
   type SiteContentState,
 } from "@/domain/content-store";
 import translations, { type Lang } from "@/i18n/translations";
+import { KNOWLEDGE_BASE } from "@/services/knowledge-base";
 import {
   isFirebaseConfigured,
   loadContentFromFirebase,
   saveContentToFirebase,
   subscribeToFirebase,
+  loadKnowledgeBase,
+  saveKnowledgeBase as saveKnowledgeBaseToFirebase,
   type SaveResult,
 } from "@/services/firebase";
 
 interface ContentContextValue {
   flags: Flags;
   content: LangContent;
+  knowledgeBase: string;
   loaded: boolean;
   saving: boolean;
   dirty: boolean;
@@ -46,6 +50,7 @@ interface ContentContextValue {
     section: SectionKey,
     data: Record<string, unknown>,
   ) => void;
+  setKnowledgeBase: (content: string) => void;
   save: () => Promise<SaveResult>;
   resetAll: () => Promise<SaveResult>;
   hasOverrides: (lang: "en" | "ar", section: SectionKey) => boolean;
@@ -92,6 +97,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       content: cached?.content ?? DEFAULT_STATE.content,
     };
   });
+  const [knowledgeBase, setKnowledgeBaseState] = useState<string>(KNOWLEDGE_BASE);
   const [loaded, setLoaded] = useState(false);
   const [saving, setSaving] = useState(false);
   const [dirty, setDirty] = useState(false);
@@ -119,6 +125,11 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       }
       setLoaded(true);
       hasHydrated.current = true;
+    });
+
+    loadKnowledgeBase().then((kb) => {
+      if (!active) return;
+      if (kb) setKnowledgeBaseState(kb);
     });
 
     unsubscribe = subscribeToFirebase((remoteState) => {
@@ -206,7 +217,11 @@ export function ContentProvider({ children }: { children: ReactNode }) {
   const save = useCallback(async () => {
     setSaving(true);
     try {
-      const result = await saveContentToFirebase(state);
+      const [contentResult, kbResult] = await Promise.all([
+        saveContentToFirebase(state),
+        knowledgeBase ? saveKnowledgeBaseToFirebase(knowledgeBase) : Promise.resolve({ ok: true } as SaveResult),
+      ]);
+      const result = contentResult.ok ? kbResult : contentResult;
       if (result.ok) {
         setDirty(false);
         setIsRemote(true);
@@ -215,7 +230,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     } finally {
       setSaving(false);
     }
-  }, [state]);
+  }, [state, knowledgeBase]);
 
   const resetAll = useCallback(async () => {
     clearLocalCache();
@@ -238,6 +253,14 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       setSaving(false);
     }
   }, []);
+
+  const setKnowledgeBase = useCallback(
+    (content: string) => {
+      setKnowledgeBaseState(content);
+      setDirty(true);
+    },
+    [],
+  );
 
   const hasOverrides = useCallback(
     (lang: "en" | "ar", section: SectionKey) =>
@@ -270,6 +293,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       value={{
         flags: state.flags,
         content: state.content,
+        knowledgeBase,
         loaded,
         saving,
         dirty,
@@ -277,6 +301,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
         setFlag,
         setSectionContent,
         setSectionContentRaw,
+        setKnowledgeBase,
         save,
         resetAll,
         hasOverrides,

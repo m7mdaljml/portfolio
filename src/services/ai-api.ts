@@ -1,4 +1,5 @@
 import { KNOWLEDGE_BASE } from "./knowledge-base";
+import { loadKnowledgeBase } from "./firebase";
 
 const API_URL = import.meta.env.VITE_AI_API_URL;
 const API_KEY = import.meta.env.VITE_AI_API_KEY;
@@ -52,8 +53,19 @@ async function fetchGitHubRepos(): Promise<StoredRepo[]> {
   }
 }
 
+async function getEffectiveKnowledgeBase(): Promise<string> {
+  try {
+    const remote = await loadKnowledgeBase();
+    if (remote && remote.trim().length > 0) return remote;
+  } catch {
+    // Fall back to the built-in knowledge base.
+  }
+  return KNOWLEDGE_BASE;
+}
+
 async function buildSystemPrompt(): Promise<string> {
   const repos = await fetchGitHubRepos();
+  const knowledgeBase = await getEffectiveKnowledgeBase();
   const reposSection =
     repos.length > 0
       ? `\n\n## Mohammad's GitHub Projects (live from his GitHub)\n\n${repos
@@ -68,7 +80,7 @@ async function buildSystemPrompt(): Promise<string> {
 
   return `You are the AI assistant for Mohammad Aljamal's personal portfolio website. You ONLY have knowledge about Mohammad and this portfolio. Use the following information to answer questions:
 
-${KNOWLEDGE_BASE}${reposSection}
+${knowledgeBase}${reposSection}
 
 Rules:
 - Answer in the SAME language the visitor writes in: if they write in Arabic, answer in Arabic; if they write in English, answer in English.

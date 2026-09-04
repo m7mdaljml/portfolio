@@ -254,6 +254,7 @@ const translations = {
         sections: "Sections & Features",
         sectionsLabel: "Sections & Features",
         content: "Content",
+        knowledgeBase: "Knowledge Base",
       },
       buttons: {
         reset: "Reset",
@@ -417,6 +418,14 @@ const translations = {
           sendingLabel: "Sending text",
           hint: "Note: the contact method cards (email, phone, GitHub, LinkedIn) are fixed links and are not editable here.",
         },
+      },
+      knowledgeBase: {
+        title: "AI Knowledge Base",
+        description: "This is the knowledge base used by the AI chatbot to answer visitor questions. Edit the Markdown content below. Changes take effect after saving.",
+        contentLabel: "Knowledge Base Content (Markdown)",
+        placeholder: "Enter your knowledge base content in Markdown...",
+        fallbackHint: "If left empty, the default built-in knowledge base will be used.",
+        resetToDefault: "Reset to Default",
       },
     },
     notFound: {
@@ -680,6 +689,7 @@ const translations = {
       tabs: {
         sectionsLabel: "الأقسام والميزات",
         content: "المحتوى",
+        knowledgeBase: "قاعدة المعرفة",
       },
       buttons: {
         reset: "إعادة تعيين",
@@ -843,6 +853,14 @@ const translations = {
           sendingLabel: "نص الجاري إرساله",
           hint: "ملاحظة: بطاقات طرق التواصل (البريد، الهاتف، GitHub، LinkedIn) روابط ثابتة ولا يمكن تعديلها هنا.",
         },
+      },
+      knowledgeBase: {
+        title: "قاعدة معرفة الذكاء الاصطناعي",
+        description: "هذه هي قاعدة المعرفة التي يستخدمها روبوت المعرفة للإجابة على أسئلة الزوار. عدّل محتوى Markdown أدناه. تُفعّل التغييرات بعد الحفظ.",
+        contentLabel: "محتوى قاعدة المعرفة (Markdown)",
+        placeholder: "أدخل محتوى قاعدة المعرفة بصيغة Markdown...",
+        fallbackHint: "إذا ترك فارغاً، سيتم استخدام قاعدة المعرفة الافتراضية المدمجة.",
+        resetToDefault: "إعادة تعيين للافتراضي",
       },
     },
     notFound: {
