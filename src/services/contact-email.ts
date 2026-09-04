@@ -21,6 +21,7 @@ export async function sendContactEmail(
       user_email: userEmail,
       user_question: userQuestion,
       reply_to: userEmail,
+      user_topic: "AI Chatbot",
       user_name: "AI Chatbot",
     },
     { publicKey: PUBLIC_KEY },
@@ -31,10 +32,13 @@ export async function sendContactForm(
   name: string,
   email: string,
   message: string,
+  topicLabel?: string,
 ): Promise<void> {
   if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY || !OWNER_EMAIL) {
     throw new Error("EmailJS is not configured.");
   }
+
+  const prefix = topicLabel ? `[${topicLabel}] ` : "";
 
   await emailjs.send(
     SERVICE_ID,
@@ -43,7 +47,8 @@ export async function sendContactForm(
       to_email: OWNER_EMAIL,
       user_email: email,
       user_name: name,
-      user_question: message,
+      user_question: `${prefix}${message}`,
+      user_topic: topicLabel || "",
       reply_to: email,
     },
     { publicKey: PUBLIC_KEY },

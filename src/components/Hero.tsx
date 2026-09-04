@@ -55,7 +55,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="mb-6"
+            className="mb-6 mt-6"
           >
             <span className="text-primary font-mono text-sm sm:text-base">
               &lt;developer&gt;
@@ -117,7 +117,7 @@ export default function Hero() {
           >
             <Button
               size="lg"
-              className="gap-2 text-base px-8 py-6 hover:glow-border"
+              className="gap-2 text-base px-8 py-6 hover:glow-border w-full sm:w-auto"
               onClick={() => scrollToSection("contact")}
               data-testid="hero-cta-contact"
             >
@@ -127,7 +127,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="gap-2 text-base px-8 py-6 border-primary/50 hover:border-primary"
+              className="gap-2 text-base px-8 py-6 border-primary/50 hover:border-primary w-full sm:w-auto"
               onClick={() => scrollToSection("experience")}
               data-testid="hero-cta-work"
             >
@@ -137,7 +137,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="gap-2 text-base px-8 py-6 border-muted hover:border-primary"
+              className="gap-2 text-base px-8 py-6 border-muted hover:border-primary w-full sm:w-auto"
               asChild
               data-testid="hero-cta-cv"
             >

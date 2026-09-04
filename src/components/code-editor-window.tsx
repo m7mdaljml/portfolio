@@ -75,7 +75,7 @@ export default function CodeEditorWindow({
           <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono truncate px-2">
             <FileCode2 size={14} className="text-primary shrink-0" />
             <span className="truncate">
-              {name} — {fileName}
+              {name} - {fileName}
             </span>
           </div>
           <div className="w-12" aria-hidden />

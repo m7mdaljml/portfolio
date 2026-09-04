@@ -57,7 +57,7 @@ export default function ParticleBackground() {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = isDark ? "hsl(240, 100%, 65%)" : "hsl(240, 100%, 60%)";
+        ctx.fillStyle = isDark ? "hsl(210, 100%, 65%)" : "hsl(210, 100%, 60%)";
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -71,8 +71,8 @@ export default function ParticleBackground() {
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.strokeStyle = isDark
-              ? `hsla(240, 100%, 65%, ${alpha * 0.6})`
-              : `hsla(240, 100%, 60%, ${alpha * 0.35})`;
+              ? `hsla(210, 100%, 65%, ${alpha * 0.6})`
+              : `hsla(210, 100%, 60%, ${alpha * 0.35})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

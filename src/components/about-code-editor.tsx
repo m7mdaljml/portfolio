@@ -23,7 +23,7 @@ export default function AboutCodeEditor() {
 
   const lines: Tok[][] = [
     [c("// about.ts")],
-    [c(`// ${name} — ${role}`)],
+    [c(`// ${name} - ${role}`)],
     [],
 
     [k("export"), x(" "), k("interface"), x(" ProfileStats {")],

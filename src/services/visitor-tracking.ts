@@ -131,7 +131,7 @@ export async function trackVisit(): Promise<void> {
       );
     }
   } catch {
-    // Silently fail — tracking should never break the site
+    // Silently fail - tracking should never break the site
   }
 }
 

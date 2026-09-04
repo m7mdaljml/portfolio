@@ -15,7 +15,7 @@ export default function Contact() {
   const { flags, getMergedTranslations } = useContent();
   const ct = getMergedTranslations(lang).contact;
 
-  const contactMethods = [
+  const directMethods = [
     {
       icon: Mail,
       label: ct.email,
@@ -66,43 +66,36 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6 mb-12">
-            {contactMethods.map((method, index) => (
-              <motion.a
-                key={method.label}
-                href={method.href}
-                target={method.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  method.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/10 group"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <method.icon className="text-primary" size={24} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-sm text-muted-foreground mb-1">
-                      {method.label}
-                    </div>
-                    <div className="text-foreground font-medium flex items-center gap-2">
-                      {method.value}
-                      {method.href.startsWith("http") && (
-                        <ExternalLink size={14} className="text-primary" />
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-
           {flags.contactForm && <ContactForm />}
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.3 }}
+            className="mb-12"
+          >
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {directMethods.map((method) => (
+                <a
+                  key={method.label}
+                  href={method.href}
+                  target={method.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    method.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm text-muted-foreground hover:text-primary hover:border-primary transition-all"
+                >
+                  <method.icon size={16} className="text-primary" />
+                  <span className="font-medium">{method.label}</span>
+                  {method.href.startsWith("http") && (
+                    <ExternalLink size={12} className="text-muted-foreground" />
+                  )}
+                </a>
+              ))}
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

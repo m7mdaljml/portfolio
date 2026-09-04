@@ -17,7 +17,7 @@ const translations = {
       lastname: "Aljamal",
       role: "Front-End Engineer",
       tagline:
-        "Building scalable, high-performance web applications — one clean component at a time.",
+        "Building scalable, high-performance web applications - one clean component at a time.",
       contactMe: "Contact Me",
       viewWork: "View Work",
       downloadCV: "Download CV",
@@ -27,13 +27,13 @@ const translations = {
       title: "Who I Am",
       bio1: "I'm a Front-End Engineer with over 2 years of professional experience specializing in Vue.js and TypeScript, building scalable and high-performance web applications.",
       bio1Highlight: ["Vue.js", "TypeScript"],
-      bio2start: "My journey in tech extends beyond code — I served as ",
+      bio2start: "My journey in tech extends beyond code - I served as ",
       bio2Chair: "Chairman of IEEE Computer Society",
       bio2mid: " at Mutah University, competed internationally in ",
       bio2acpc: "ACPC in Egypt",
       bio2end: ", and contributed as a core member of the ",
       bio2gdsc: "Google Developer Student Club",
-      bio3: "I thrive on translating complex business requirements into elegant, responsive interfaces. Problem-solving isn't just what I do — it's how I think.",
+      bio3: "I thrive on translating complex business requirements into elegant, responsive interfaces. Problem-solving isn't just what I do - it's how I think.",
       yearsExp: "Years Experience",
       yearsExpValue: "2+",
       companies: "Companies",
@@ -143,7 +143,7 @@ const translations = {
       degree: "Bachelor of Computer Science",
       university: "Mutah University",
       years: "2019 – 2023",
-      gpa: "GPA: 82.61 — Very Good",
+      gpa: "GPA: 82.61 - Very Good",
       desc1:
         "Comprehensive curriculum covering data structures, algorithms, software engineering, web development, and database systems.",
       desc2:
@@ -156,6 +156,16 @@ const translations = {
         "Looking for a developer who combines technical excellence with leadership experience? Let's talk.",
       email: "Email",
       phone: "Phone",
+      talkTitle: "What do you want to talk about?",
+      talkSubtitle: "Pick a topic and the form will adapt to it.",
+      topic: "Topic",
+      topics: {
+        job: "Job opportunity",
+        collaboration: "Collaboration",
+        project: "Project",
+        hello: "Just saying hello",
+        somethingElse: "Something else",
+      },
       readyTitle: "Ready to Hire?",
       readyDesc:
         "I'm open to new opportunities and exciting projects. Whether you're looking for a front-end engineer or a technical leader, I'd love to hear from you.",
@@ -171,6 +181,13 @@ const translations = {
         emailPlaceholder: "you@example.com",
         message: "Message",
         messagePlaceholder: "Write your message here...",
+        placeholders: {
+          job: "Tell me about the role, the team, and what you're looking for...",
+          collaboration: "Describe the idea or partnership you have in mind...",
+          project: "Share the project vision, tech stack, and scope...",
+          hello: "Say hello - I'd love to hear from you!",
+          somethingElse: "What's on your mind?",
+        },
         send: "Send Message",
         sending: "Sending...",
         nameRequired: "Please enter your name",
@@ -184,7 +201,7 @@ const translations = {
       tag: "github",
       title: "GitHub Projects",
       subtitle:
-        "A selection of my public repositories — from web apps to competitive programming solutions.",
+        "A selection of my public repositories - from web apps to competitive programming solutions.",
       viewAll: "View All on GitHub",
       loading: "Loading repositories...",
       error: "Could not load repositories.",
@@ -205,7 +222,7 @@ const translations = {
       errorResponse:
         "Sorry, something went wrong while getting an answer. Please try again later.",
       noAnswerMessage:
-        "I couldn't find an answer to this question. If you'd like Mohammad to contact you about it, please enter your email.",
+        "I don't have enough information to answer that. If you'd like Mohammad to contact you about it, please enter your email.",
       leaveEmail:
         "Leave your email below and Mohammad will get back to you about your question.",
       emailPlaceholder: "Your email address",
@@ -240,7 +257,7 @@ const translations = {
       header: {
         title: "Admin Dashboard",
         connected: "Connected to Firebase",
-        notConfigured: "Firebase not configured — storing locally",
+        notConfigured: "Firebase not configured - storing locally",
         viewSite: "View Site",
       },
       status: {
@@ -273,7 +290,8 @@ const translations = {
       loading: "Loading content...",
       visitors: {
         loading: "Loading visitor stats...",
-        noData: "No visitor data available yet. Data will appear once someone visits the site.",
+        noData:
+          "No visitor data available yet. Data will appear once someone visits the site.",
         uniqueVisitors: "Unique Visitors",
         totalVisits: "Total Visits",
         activeDays: "Active Days",
@@ -298,11 +316,23 @@ const translations = {
           hero: { label: "Hero", desc: "Name, role, tagline & CTAs" },
           about: { label: "About", desc: "Who I Am bio & stats" },
           skills: { label: "Skills", desc: "Technical arsenal categories" },
-          experience: { label: "Experience", desc: "Professional journey timeline" },
-          achievements: { label: "Achievements", desc: "Leadership & competitions" },
+          experience: {
+            label: "Experience",
+            desc: "Professional journey timeline",
+          },
+          achievements: {
+            label: "Achievements",
+            desc: "Leadership & competitions",
+          },
           education: { label: "Education", desc: "Academic foundation" },
-          github: { label: "GitHub Projects", desc: "Live repository showcase" },
-          contact: { label: "Contact", desc: "Contact methods & message section" },
+          github: {
+            label: "GitHub Projects",
+            desc: "Live repository showcase",
+          },
+          contact: {
+            label: "Contact",
+            desc: "Contact methods & message section",
+          },
         },
         features: {
           aiChat: { label: "AI Assistant", desc: "Floating chatbot widget" },
@@ -353,12 +383,12 @@ const translations = {
           bio2gdsc: "Bio 2 - highlighted (GDSC)",
           bio3: "Bio 3",
           statsTitle: "Stats Labels",
-          yearsExpLabel: "Years Experience — Label",
-          yearsExpValue: "Years Experience — Value",
-          companiesLabel: "Companies — Label",
-          companiesValue: "Companies — Value",
-          competitionsLabel: "Competitions — Label",
-          competitionsValue: "Competitions — Value",
+          yearsExpLabel: "Years Experience - Label",
+          yearsExpValue: "Years Experience - Value",
+          companiesLabel: "Companies - Label",
+          companiesValue: "Companies - Value",
+          competitionsLabel: "Competitions - Label",
+          competitionsValue: "Competitions - Value",
         },
         skills: {
           heading: "Heading",
@@ -439,10 +469,12 @@ const translations = {
       },
       knowledgeBase: {
         title: "AI Knowledge Base",
-        description: "This is the knowledge base used by the AI chatbot to answer visitor questions. Edit the Markdown content below. Changes take effect after saving.",
+        description:
+          "This is the knowledge base used by the AI chatbot to answer visitor questions. Edit the Markdown content below. Changes take effect after saving.",
         contentLabel: "Knowledge Base Content (Markdown)",
         placeholder: "Enter your knowledge base content in Markdown...",
-        fallbackHint: "If left empty, the default built-in knowledge base will be used.",
+        fallbackHint:
+          "If left empty, the default built-in knowledge base will be used.",
         resetToDefault: "Reset to Default",
       },
     },
@@ -475,7 +507,7 @@ const translations = {
       lastname: "الجمل",
       role: "مهندس واجهات أمامية",
       tagline:
-        "بناء تطبيقات ويب قابلة للتطوير وعالية الأداء — مكوّن نظيف في كل مرة.",
+        "بناء تطبيقات ويب قابلة للتطوير وعالية الأداء - مكوّن نظيف في كل مرة.",
       contactMe: "تواصل معي",
       viewWork: "عرض الأعمال",
       downloadCV: "تحميل السيرة الذاتية",
@@ -485,13 +517,13 @@ const translations = {
       title: "من أنا",
       bio1: "أنا مهندس واجهات أمامية بخبرة مهنية تزيد على سنتين، متخصص في Vue.js وTypeScript، أبني تطبيقات ويب قابلة للتطوير وعالية الأداء.",
       bio1Highlight: ["Vue.js", "TypeScript"],
-      bio2start: "رحلتي في التقنية تمتد إلى أبعد من الكود — شغلت منصب ",
+      bio2start: "رحلتي في التقنية تمتد إلى أبعد من الكود - شغلت منصب ",
       bio2Chair: "رئيس جمعية IEEE لعلوم الحاسوب",
       bio2mid: " في جامعة مؤتة، وتنافست دولياً في ",
       bio2acpc: "بطولة ACPC في مصر",
       bio2end: "، وأسهمت عضواً أساسياً في ",
       bio2gdsc: "نادي مطوري Google للطلاب",
-      bio3: "أتميّز في ترجمة متطلبات الأعمال المعقدة إلى واجهات أنيقة ومتجاوبة. حل المشكلات ليس مجرد عمل أؤديه — بل طريقة تفكيري.",
+      bio3: "أتميّز في ترجمة متطلبات الأعمال المعقدة إلى واجهات أنيقة ومتجاوبة. حل المشكلات ليس مجرد عمل أؤديه - بل طريقة تفكيري.",
       yearsExp: "سنوات الخبرة",
       yearsExpValue: "2+",
       companies: "شركات",
@@ -601,7 +633,7 @@ const translations = {
       degree: "بكالوريوس علوم الحاسوب",
       university: "جامعة مؤتة",
       years: "2019 – 2023",
-      gpa: "المعدل: 82.61 — جيد جداً",
+      gpa: "المعدل: 82.61 - جيد جداً",
       desc1:
         "منهج شامل يغطي هياكل البيانات والخوارزميات وهندسة البرمجيات وتطوير الويب وأنظمة قواعد البيانات.",
       desc2:
@@ -613,6 +645,16 @@ const translations = {
       subtitle: "تبحث عن مطور يجمع بين التميز التقني وخبرة القيادة؟ تحدث معي.",
       email: "البريد الإلكتروني",
       phone: "الهاتف",
+      talkTitle: "عن ماذا تريد أن تتحدث؟",
+      talkSubtitle: "اختر موضوعاً وسيتكيف النموذج معه.",
+      topic: "الموضوع",
+      topics: {
+        job: "فرصة عمل",
+        collaboration: "تعاون",
+        project: "مشروع",
+        hello: "مجرد إلقاء التحية",
+        somethingElse: "شيء آخر",
+      },
       readyTitle: "مستعد للتوظيف؟",
       readyDesc:
         "أنا منفتح على الفرص الجديدة والمشاريع المثيرة. سواء كنت تبحث عن مهندس واجهات أمامية أو قائد تقني، يسعدني التحدث معك.",
@@ -627,6 +669,13 @@ const translations = {
         emailPlaceholder: "you@example.com",
         message: "الرسالة",
         messagePlaceholder: "اكتب رسالتك هنا...",
+        placeholders: {
+          job: "أخبرني عن الدور والفريق وما الذي تبحث عنه...",
+          collaboration: "صف الفكرة أو الشراكة التي تفكر فيها...",
+          project: "شارك رؤية المشروع وتقنياته ونطاقه...",
+          hello: "قل مرحباً - يسعدني سماعك!",
+          somethingElse: "ما الذي يدور في ذهنك؟",
+        },
         send: "إرسال الرسالة",
         sending: "جارٍ الإرسال...",
         nameRequired: "يرجى إدخال اسمك",
@@ -640,7 +689,7 @@ const translations = {
       tag: "github",
       title: "مشاريع GitHub",
       subtitle:
-        "مختارات من مستودعاتي العامة — من تطبيقات الويب إلى حلول البرمجة التنافسية.",
+        "مختارات من مستودعاتي العامة - من تطبيقات الويب إلى حلول البرمجة التنافسية.",
       viewAll: "عرض الكل على GitHub",
       loading: "جاري تحميل المستودعات...",
       error: "تعذّر تحميل المستودعات.",
@@ -694,7 +743,7 @@ const translations = {
       header: {
         title: "لوحة التحكم",
         connected: "متصل بـ Firebase",
-        notConfigured: "Firebase غير مهيأ — الحفظ محلياً",
+        notConfigured: "Firebase غير مهيأ - الحفظ محلياً",
         viewSite: "عرض الموقع",
       },
       status: {
@@ -726,7 +775,8 @@ const translations = {
       loading: "جارٍ تحميل المحتوى...",
       visitors: {
         loading: "جارٍ تحميل إحصائيات الزوار...",
-        noData: "لا توجد بيانات زوار بعد. ستظهر البيانات بعد أن يزور أحدهم الموقع.",
+        noData:
+          "لا توجد بيانات زوار بعد. ستظهر البيانات بعد أن يزور أحدهم الموقع.",
         uniqueVisitors: "زوار فريدون",
         totalVisits: "إجمالي الزيارات",
         activeDays: "أيام نشطة",
@@ -748,7 +798,10 @@ const translations = {
         featuresDesc: "تبديل الأدوات العامة ونموذج التواصل.",
         edited: "تم تحريره",
         sections: {
-          hero: { label: "الرئيسية", desc: "الاسم، الدور، الشعار وأزرار الإجراء" },
+          hero: {
+            label: "الرئيسية",
+            desc: "الاسم، الدور، الشعار وأزرار الإجراء",
+          },
           about: { label: "من أنا", desc: "نبذة وإحصائيات" },
           skills: { label: "المهارات", desc: "فئات المهارات التقنية" },
           experience: { label: "الخبرة", desc: "الرحلة المهنية الزمنية" },
@@ -806,12 +859,12 @@ const translations = {
           bio2gdsc: "نبذة 2 - مميزة (GDSC)",
           bio3: "نبذة 3",
           statsTitle: "تسميات الإحصائيات",
-          yearsExpLabel: "سنوات الخبرة — التسمية",
-          yearsExpValue: "سنوات الخبرة — القيمة",
-          companiesLabel: "الشركات — التسمية",
-          companiesValue: "الشركات — القيمة",
-          competitionsLabel: "المسابقات — التسمية",
-          competitionsValue: "المسابقات — القيمة",
+          yearsExpLabel: "سنوات الخبرة - التسمية",
+          yearsExpValue: "سنوات الخبرة - القيمة",
+          companiesLabel: "الشركات - التسمية",
+          companiesValue: "الشركات - القيمة",
+          competitionsLabel: "المسابقات - التسمية",
+          competitionsValue: "المسابقات - القيمة",
         },
         skills: {
           heading: "العنوان الرئيسي",
@@ -892,10 +945,12 @@ const translations = {
       },
       knowledgeBase: {
         title: "قاعدة معرفة الذكاء الاصطناعي",
-        description: "هذه هي قاعدة المعرفة التي يستخدمها روبوت المعرفة للإجابة على أسئلة الزوار. عدّل محتوى Markdown أدناه. تُفعّل التغييرات بعد الحفظ.",
+        description:
+          "هذه هي قاعدة المعرفة التي يستخدمها روبوت المعرفة للإجابة على أسئلة الزوار. عدّل محتوى Markdown أدناه. تُفعّل التغييرات بعد الحفظ.",
         contentLabel: "محتوى قاعدة المعرفة (Markdown)",
         placeholder: "أدخل محتوى قاعدة المعرفة بصيغة Markdown...",
-        fallbackHint: "إذا ترك فارغاً، سيتم استخدام قاعدة المعرفة الافتراضية المدمجة.",
+        fallbackHint:
+          "إذا ترك فارغاً، سيتم استخدام قاعدة المعرفة الافتراضية المدمجة.",
         resetToDefault: "إعادة تعيين للافتراضي",
       },
     },

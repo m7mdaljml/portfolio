@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Loader2, CheckCircle2, TriangleAlert, Mail } from "lucide-react";
+import {
+  Send,
+  Loader2,
+  CheckCircle2,
+  TriangleAlert,
+  Mail,
+  Briefcase,
+  Handshake,
+  Rocket,
+  Coffee,
+  MessageCircle,
+  type LucideIcon,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -17,10 +29,34 @@ import {
 
 type Status = "idle" | "sending" | "success" | "error";
 
+type ContactTopic =
+  | "job"
+  | "collaboration"
+  | "project"
+  | "hello"
+  | "somethingElse";
+
 const ContactForm = () => {
   const { lang } = useLang();
   const { getMergedTranslations } = useContent();
-  const ft = getMergedTranslations(lang).contact.form;
+  const ct = getMergedTranslations(lang).contact;
+  const ft = ct.form;
+  const [topic, setTopic] = useState<ContactTopic>("job");
+
+  const topics: { key: ContactTopic; icon: LucideIcon; label: string }[] = [
+    { key: "job", icon: Briefcase, label: ct.topics.job },
+    { key: "collaboration", icon: Handshake, label: ct.topics.collaboration },
+    { key: "project", icon: Rocket, label: ct.topics.project },
+    { key: "hello", icon: Coffee, label: ct.topics.hello },
+    {
+      key: "somethingElse",
+      icon: MessageCircle,
+      label: ct.topics.somethingElse,
+    },
+  ];
+
+  const topicLabel = ct.topics[topic];
+  const messagePlaceholder = ft.placeholders[topic] ?? ft.messagePlaceholder;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -60,7 +96,12 @@ const ContactForm = () => {
 
     setStatus("sending");
     try {
-      await sendContactForm(name.trim(), email.trim(), message.trim());
+      await sendContactForm(
+        name.trim(),
+        email.trim(),
+        message.trim(),
+        topicLabel,
+      );
       recordEmailSent();
       setStatus("success");
       setName("");
@@ -90,6 +131,36 @@ const ContactForm = () => {
         <h3 className="text-xl font-bold">{ft.title}</h3>
       </div>
       <p className="text-muted-foreground text-sm mb-6">{ft.subtitle}</p>
+
+      <div className="mb-8">
+        <h4 className="font-semibold mb-3">{ct.talkTitle}</h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2">
+          {topics.map((item) => {
+            const selected = topic === item.key;
+            return (
+              <motion.button
+                key={item.key}
+                type="button"
+                onClick={() => setTopic(item.key)}
+                whileTap={{ scale: 0.98 }}
+                aria-pressed={selected}
+                className={`flex items-center gap-2 rounded-lg border px-4 py-3 text-sm transition-all cursor-pointer ${
+                  selected
+                    ? "border-primary bg-primary/10 text-foreground shadow-lg shadow-primary/10"
+                    : "border-border bg-background text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                }`}
+                data-testid={`contact-topic-${item.key}`}
+              >
+                <item.icon
+                  size={16}
+                  className={selected ? "text-primary" : ""}
+                />
+                <span className="font-medium">{item.label}</span>
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-5" noValidate>
         <div className="space-y-2">
@@ -129,7 +200,7 @@ const ContactForm = () => {
             id="contact-message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder={ft.messagePlaceholder}
+            placeholder={messagePlaceholder}
             className={inputClass(errors.message)}
             rows={5}
           />
