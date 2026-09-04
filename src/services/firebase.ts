@@ -74,7 +74,7 @@ function hydrateNestedArrays(obj: unknown): unknown {
   return out;
 }
 
-function getDb(): Firestore | null {
+export function getDb(): Firestore | null {
   if (!isFirebaseConfigured()) return null;
   if (!app) {
     app = initializeApp(firebaseConfig);

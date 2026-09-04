@@ -254,6 +254,7 @@ const translations = {
         sections: "Sections & Features",
         sectionsLabel: "Sections & Features",
         content: "Content",
+        visitors: "Visitors",
         knowledgeBase: "Knowledge Base",
       },
       buttons: {
@@ -270,6 +271,23 @@ const translations = {
         unknown: "Unknown error",
       },
       loading: "Loading content...",
+      visitors: {
+        loading: "Loading visitor stats...",
+        noData: "No visitor data available yet. Data will appear once someone visits the site.",
+        uniqueVisitors: "Unique Visitors",
+        totalVisits: "Total Visits",
+        activeDays: "Active Days",
+        dailyTitle: "Daily Visits",
+        dailyDesc: "Visits per day over the last 14 days",
+        recentTitle: "Recent Visits",
+        recentDesc: "Last 20 visit records",
+        table: {
+          time: "Time",
+          visitor: "Visitor",
+          path: "Path",
+          referrer: "Referrer",
+        },
+      },
       toggles: {
         contentSectionsTitle: "Content Sections",
         contentSectionsDesc: "Show or hide each section of the portfolio.",
@@ -689,6 +707,7 @@ const translations = {
       tabs: {
         sectionsLabel: "الأقسام والميزات",
         content: "المحتوى",
+        visitors: "الزوار",
         knowledgeBase: "قاعدة المعرفة",
       },
       buttons: {
@@ -705,6 +724,23 @@ const translations = {
         unknown: "خطأ غير معروف",
       },
       loading: "جارٍ تحميل المحتوى...",
+      visitors: {
+        loading: "جارٍ تحميل إحصائيات الزوار...",
+        noData: "لا توجد بيانات زوار بعد. ستظهر البيانات بعد أن يزور أحدهم الموقع.",
+        uniqueVisitors: "زوار فريدون",
+        totalVisits: "إجمالي الزيارات",
+        activeDays: "أيام نشطة",
+        dailyTitle: "الزيارات اليومية",
+        dailyDesc: "الزيارات يومياً خلال آخر 14 يوماً",
+        recentTitle: "الزيارات الأخيرة",
+        recentDesc: "آخر 20 سجل زيارة",
+        table: {
+          time: "الوقت",
+          visitor: "الزائر",
+          path: "المسار",
+          referrer: "المرجع",
+        },
+      },
       toggles: {
         contentSectionsTitle: "أقسام المحتوى",
         contentSectionsDesc: "إظهار أو إخفاء كل قسم من أقسام المحتوى.",

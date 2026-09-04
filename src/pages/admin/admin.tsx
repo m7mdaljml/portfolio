@@ -29,6 +29,7 @@ import AdminNav from "./admin-nav";
 import SectionToggles from "./section-toggles";
 import ContentEditors from "./editors/content-editors";
 import KnowledgeBaseEditor from "./editors/knowledge-base-editor";
+import VisitorStats from "./visitor-stats";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -258,6 +259,7 @@ export default function Admin() {
             <TabsList className="mb-4">
               <TabsTrigger value="sections">{admin.tabs.sectionsLabel}</TabsTrigger>
               <TabsTrigger value="content">{admin.tabs.content}</TabsTrigger>
+              <TabsTrigger value="visitors">{admin.tabs.visitors}</TabsTrigger>
               <TabsTrigger value="knowledgeBase">{admin.tabs.knowledgeBase}</TabsTrigger>
             </TabsList>
             <TabsContent value="sections">
@@ -265,6 +267,9 @@ export default function Admin() {
             </TabsContent>
             <TabsContent value="content">
               <ContentEditors />
+            </TabsContent>
+            <TabsContent value="visitors">
+              <VisitorStats />
             </TabsContent>
             <TabsContent value="knowledgeBase">
               <KnowledgeBaseEditor />

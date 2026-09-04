@@ -6,12 +6,15 @@ import { Route, Switch, Router as WouterRouter } from "wouter";
 import { ThemeProvider } from "@/context/theme-context";
 import { LanguageProvider } from "@/context/language-context";
 import { ContentProvider } from "./context/content-context";
+import { useVisitorTracking } from "./hooks/use-visitor-tracking";
 import Portfolio from "./pages/portfolio";
 import Admin from "./pages/admin/admin";
 
 const queryClient = new QueryClient();
 
 function Router() {
+  useVisitorTracking();
+
   return (
     <Switch>
       <Route path="/" component={Portfolio} />
