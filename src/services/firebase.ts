@@ -28,6 +28,52 @@ let db: Firestore | null = null;
 const DOC_ID = "site-content";
 const COLLECTION = "portfolio";
 
+/** Firestore does not allow nested arrays. Convert string[][] to Record<string, string[]> before saving. */
+function sanitizeForFirebase(obj: unknown): unknown {
+  if (Array.isArray(obj) && obj.length > 0 && Array.isArray(obj[0])) {
+    const record: Record<string, string[]> = {};
+    obj.forEach((item, i) => {
+      record[String(i)] = item as string[];
+    });
+    return record;
+  }
+  if (typeof obj === "object" && obj !== null && !Array.isArray(obj)) {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(obj)) {
+      out[k] = sanitizeForFirebase(v);
+    }
+    return out;
+  }
+  return obj;
+}
+
+/** Recursively sanitize a state tree for Firebase. */
+function sanitizeState(state: SiteContentState): Record<string, unknown> {
+  return sanitizeForFirebase(state) as Record<string, unknown>;
+}
+
+/** Recursively walk the object and convert any Record<"0", "1", ...> back to arrays. */
+function hydrateNestedArrays(obj: unknown): unknown {
+  if (typeof obj !== "object" || obj === null || Array.isArray(obj)) {
+    if (Array.isArray(obj)) {
+      return obj.map(hydrateNestedArrays);
+    }
+    return obj;
+  }
+  const entries = Object.entries(obj);
+  if (entries.length > 0 && entries.every(([k]) => /^\d+$/.test(k))) {
+    const arr = entries
+      .sort((a, b) => Number(a[0]) - Number(b[0]))
+      .map(([, v]) => v);
+    return arr.map(hydrateNestedArrays);
+  }
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of entries) {
+    out[k] = hydrateNestedArrays(v);
+  }
+  return out;
+}
+
 function getDb(): Firestore | null {
   if (!isFirebaseConfigured()) return null;
   if (!app) {
@@ -43,7 +89,7 @@ export async function loadContentFromFirebase(): Promise<SiteContentState | null
   try {
     const snap = await getDoc(doc(dbInstance, COLLECTION, DOC_ID));
     if (snap.exists()) {
-      return snap.data() as SiteContentState;
+      return hydrateNestedArrays(snap.data()) as SiteContentState;
     }
     return null;
   } catch {
@@ -82,7 +128,9 @@ export async function saveContentToFirebase(
     };
   }
   try {
-    await setDoc(doc(dbInstance, COLLECTION, DOC_ID), state, { merge: true });
+    await setDoc(doc(dbInstance, COLLECTION, DOC_ID), sanitizeState(state), {
+      merge: true,
+    });
     return { ok: true };
   } catch (err) {
     const message =
@@ -100,7 +148,7 @@ export function subscribeToFirebase(
     doc(dbInstance, COLLECTION, DOC_ID),
     (snap) => {
       if (snap.exists()) {
-        onChange(snap.data() as SiteContentState);
+        onChange(hydrateNestedArrays(snap.data()) as SiteContentState);
       }
     },
     () => {

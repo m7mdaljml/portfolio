@@ -235,7 +235,7 @@ export default function Admin() {
             </div>
           </CardContent>
           {saveState === "error" && saveError && (
-            <div className="px-4 pb-4 -mt-2 text-sm text-destructive-foreground flex items-start gap-2">
+            <div className="px-4 pb-4 -mt-2 text-sm text-destructive flex items-start gap-2">
               <TriangleAlert size={16} className="shrink-0 mt-0.5" />
               <div className="break-all">
                 <p className="font-semibold">{admin.saveError.title}</p>

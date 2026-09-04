@@ -30,11 +30,20 @@ export default function Skills() {
     title: string;
     subtitle: string;
     categories: string[];
-    blocks?: string[][];
+    blocks?: string[][] | Record<string, string[]>;
   };
 
-  const blocks =
-    st.blocks && st.blocks.length ? st.blocks : DEFAULT_SKILL_BLOCKS;
+  const rawBlocks = st.blocks;
+  const blocks: string[][] =
+    rawBlocks && (Array.isArray(rawBlocks)
+      ? rawBlocks.length
+      : Object.keys(rawBlocks).length)
+      ? Array.isArray(rawBlocks)
+        ? rawBlocks
+        : Object.keys(rawBlocks)
+            .sort((a, b) => Number(a) - Number(b))
+            .map((k) => (rawBlocks as Record<string, string[]>)[k])
+      : DEFAULT_SKILL_BLOCKS;
 
   const categories = blocks.map((skillBlock, i) => ({
     color: COLORS[i % COLORS.length],

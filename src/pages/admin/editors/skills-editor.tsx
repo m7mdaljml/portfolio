@@ -27,7 +27,17 @@ export default function SkillsEditor({ lang }: { lang: "en" | "ar" }) {
   const { merged, setField, sc, st } = useSectionEditor("skills", lang);
 
   const categories = (merged.categories as string[]) ?? [];
-  const blocks = (merged.blocks as string[][]) ?? DEFAULT_BLOCKS;
+  const rawBlocks = merged.blocks;
+  const blocks: string[][] =
+    rawBlocks && (Array.isArray(rawBlocks)
+      ? rawBlocks.length
+      : Object.keys(rawBlocks as Record<string, string[]>).length)
+      ? Array.isArray(rawBlocks)
+        ? (rawBlocks as string[][])
+        : Object.keys(rawBlocks as Record<string, string[]>)
+            .sort((a, b) => Number(a) - Number(b))
+            .map((k) => (rawBlocks as Record<string, string[]>)[k])
+      : DEFAULT_BLOCKS;
 
   const count = Math.max(categories.length, blocks.length, 1);
   const categoryList = Array.from(
