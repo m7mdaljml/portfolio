@@ -30,6 +30,7 @@ import SectionToggles from "./section-toggles";
 import ContentEditors from "./editors/content-editors";
 import KnowledgeBaseEditor from "./editors/knowledge-base-editor";
 import VisitorStats from "./visitor-stats";
+import Reports from "./reports";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -172,7 +173,7 @@ export default function Admin() {
                   className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
                 >
                   {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-                  {theme === "dark" ? "Light mode" : "Dark mode"}
+                  {theme === "dark" ? t.theme.light : t.theme.dark}
                 </button>
                 <button
                   onClick={() => {
@@ -256,10 +257,11 @@ export default function Admin() {
 
         {loaded && (
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-4">
+            <TabsList className="flex-wrap h-auto gap-1 sm:flex-nowrap sm:gap-0 sm:h-9 mb-4">
               <TabsTrigger value="sections">{admin.tabs.sectionsLabel}</TabsTrigger>
               <TabsTrigger value="content">{admin.tabs.content}</TabsTrigger>
               <TabsTrigger value="visitors">{admin.tabs.visitors}</TabsTrigger>
+              <TabsTrigger value="reports">{admin.tabs.reports}</TabsTrigger>
               <TabsTrigger value="knowledgeBase">{admin.tabs.knowledgeBase}</TabsTrigger>
             </TabsList>
             <TabsContent value="sections">
@@ -270,6 +272,9 @@ export default function Admin() {
             </TabsContent>
             <TabsContent value="visitors">
               <VisitorStats />
+            </TabsContent>
+            <TabsContent value="reports">
+              <Reports />
             </TabsContent>
             <TabsContent value="knowledgeBase">
               <KnowledgeBaseEditor />

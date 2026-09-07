@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from "react";
-import { Loader2, Users, BarChart3, Clock } from "lucide-react";
+import { Loader2, Users, BarChart3, Clock, Timer } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -16,12 +16,30 @@ import {
 interface Stats {
   totalUniqueVisitors: number;
   totalVisits: number;
+  totalTimeMs: number;
+  avgTimeMs: number;
   recentVisits: (VisitRecord & { fingerprint: string })[];
   dailyVisits: Record<string, number>;
+  visitorTimes: {
+    fingerprint: string;
+    totalTimeMs: number;
+    sessions: number;
+    totalVisits: number;
+    lastVisit: string;
+  }[];
 }
 
 function maskFingerprint(fp: string): string {
   return fp.slice(0, 6) + "..." + fp.slice(-4);
+}
+
+function formatDuration(ms: number): string {
+  if (!Number.isFinite(ms) || ms <= 0) return "0m";
+  const totalSeconds = Math.round(ms / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  return `${minutes}m`;
 }
 
 export default function VisitorStats() {
@@ -66,49 +84,104 @@ export default function VisitorStats() {
     .sort(([a], [b]) => b.localeCompare(a))
     .slice(0, 14);
 
+  const statCards = [
+    {
+      icon: Users,
+      value: stats.totalUniqueVisitors,
+      label: visitors.uniqueVisitors,
+    },
+    {
+      icon: BarChart3,
+      value: stats.totalVisits,
+      label: visitors.totalVisits,
+    },
+    {
+      icon: Clock,
+      value: sortedDays.length,
+      label: visitors.activeDays,
+    },
+    {
+      icon: Timer,
+      value: formatDuration(stats.avgTimeMs),
+      label: visitors.avgTime,
+    },
+  ];
+
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card>
-          <CardContent className="p-4 flex items-center gap-4">
-            <div className="p-2.5 bg-primary/10 rounded-lg">
-              <Users className="text-primary" size={20} />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{stats.totalUniqueVisitors}</p>
-              <p className="text-xs text-muted-foreground">
-                {visitors.uniqueVisitors}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4 flex items-center gap-4">
-            <div className="p-2.5 bg-primary/10 rounded-lg">
-              <BarChart3 className="text-primary" size={20} />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{stats.totalVisits}</p>
-              <p className="text-xs text-muted-foreground">
-                {visitors.totalVisits}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4 flex items-center gap-4">
-            <div className="p-2.5 bg-primary/10 rounded-lg">
-              <Clock className="text-primary" size={20} />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{sortedDays.length}</p>
-              <p className="text-xs text-muted-foreground">
-                {visitors.activeDays}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        {statCards.map((card) => (
+          <Card key={card.label}>
+            <CardContent className="p-4 flex items-center gap-4">
+              <div className="p-2.5 bg-primary/10 rounded-lg">
+                <card.icon className="text-primary" size={20} />
+              </div>
+              <div>
+                <p className="text-2xl font-bold">{card.value}</p>
+                <p className="text-xs text-muted-foreground">{card.label}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
+
+      {stats.visitorTimes.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Timer size={18} />
+              {visitors.timePerVisitor}
+            </CardTitle>
+            <CardDescription>{visitors.timePerVisitorDesc}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border text-muted-foreground">
+                    <th className="text-left py-2 font-medium">
+                      {visitors.table.visitor}
+                    </th>
+                    <th className="text-left py-2 font-medium">
+                      {visitors.table.totalTime}
+                    </th>
+                    <th className="text-left py-2 font-medium">
+                      {visitors.table.sessions}
+                    </th>
+                    <th className="text-left py-2 font-medium">
+                      {visitors.table.visits}
+                    </th>
+                    <th className="text-left py-2 font-medium">
+                      {visitors.table.avgTime}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {stats.visitorTimes.map((v, i) => (
+                    <tr key={i} className="border-b border-border/50">
+                      <td className="py-2 font-mono text-xs">
+                        {maskFingerprint(v.fingerprint)}
+                      </td>
+                      <td className="py-2 font-mono text-xs">
+                        {formatDuration(v.totalTimeMs)}
+                      </td>
+                      <td className="py-2 font-mono text-xs">
+                        {v.sessions}
+                      </td>
+                      <td className="py-2 font-mono text-xs">
+                        {v.totalVisits}
+                      </td>
+                      <td className="py-2 font-mono text-xs">
+                        {formatDuration(v.sessions > 0 ? v.totalTimeMs / v.sessions : 0)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {sortedDays.length > 0 && (
         <Card>

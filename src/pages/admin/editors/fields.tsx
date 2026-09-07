@@ -63,11 +63,13 @@ export function FieldArray({
   values,
   onChange,
   placeholder,
+  addLabel,
 }: {
   label: string;
   values: string[];
   onChange: (values: string[]) => void;
   placeholder?: string;
+  addLabel?: string;
 }) {
   const update = (index: number, value: string) => {
     const next = [...values];
@@ -112,7 +114,7 @@ export function FieldArray({
         className="gap-1.5"
       >
         <Plus size={14} />
-        Add {label}
+        {addLabel ?? `Add ${label}`}
       </Button>
     </div>
   );

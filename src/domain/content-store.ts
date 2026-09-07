@@ -62,6 +62,7 @@ export interface SectionContent {
     companiesValue: string;
     competitions: string;
     competitionsValue: string;
+    funFacts: string[];
   };
   skills: {
     title: string;

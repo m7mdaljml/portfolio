@@ -1,8 +1,15 @@
-import { TextField, TextAreaField, SectionCard } from "./fields";
+import { TextField, TextAreaField, FieldArray, SectionCard } from "./fields";
 import { useSectionEditor } from "./use-section-editor";
+import { useContent } from "@/context/content-context";
+import translations from "@/i18n/translations";
 
 export default function AboutEditor({ lang }: { lang: "en" | "ar" }) {
   const { merged, setField, sc, st } = useSectionEditor("about", lang);
+  const { getMergedTranslations, setSectionContentRaw } = useContent();
+  const enFacts = [
+    ...((getMergedTranslations("en") as typeof translations["en"]).about
+      .funFacts ?? []),
+  ];
 
   return (
     <div className="space-y-4">
@@ -88,6 +95,17 @@ export default function AboutEditor({ lang }: { lang: "en" | "ar" }) {
             />
           </div>
         </div>
+      </SectionCard>
+
+      <SectionCard title={sc("funFactsTitle")}>
+        <p className="text-sm text-muted-foreground">{sc("funFactsHint")}</p>
+        <FieldArray
+          label={sc("funFactsLabel")}
+          values={enFacts}
+          onChange={(v) => setSectionContentRaw("en", "about", { funFacts: v })}
+          placeholder={sc("funFactsLabel")}
+          addLabel={sc("addFunFact")}
+        />
       </SectionCard>
     </div>
   );

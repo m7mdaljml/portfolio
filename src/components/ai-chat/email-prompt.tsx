@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, Loader2, X } from "lucide-react";
 import { sendContactEmail } from "@/services/contact-email";
+import { recordContactMessage } from "@/services/site-analytics";
 import { useLang } from "@/context/language-context";
 
 type Props = {
@@ -28,6 +29,7 @@ const EmailPrompt = ({ question, onSent, onCancel }: Props) => {
     setSending(true);
     try {
       await sendContactEmail(trimmed, question);
+      recordContactMessage("AI Chatbot", trimmed, "AI Chatbot");
       onSent(trimmed);
     } catch {
       setError(t.aiChat.emailSendError);

@@ -6,6 +6,7 @@ import { Star, GitFork, ExternalLink } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import { useLang } from "@/context/language-context";
 import { useContent } from "@/context/content-context";
+import { recordRepoClick } from "@/services/site-analytics";
 
 interface Repo {
   id: number;
@@ -132,6 +133,7 @@ export default function GitHubRepos() {
                           href={repo.html_url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => recordRepoClick(repo.name)}
                           className="font-semibold text-foreground truncate group-hover:text-primary transition-colors min-w-0"
                         >
                           {repo.name}
@@ -202,6 +204,7 @@ export default function GitHubRepos() {
                   href="https://github.com/M7mdaljml"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => recordRepoClick("__all_repos__")}
                   className="flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/50 text-primary hover:border-primary hover:shadow-md hover:shadow-primary/20 transition-all font-medium text-sm"
                 >
                   <FiGithub size={18} />

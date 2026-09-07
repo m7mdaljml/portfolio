@@ -105,7 +105,7 @@ export default function AdminLogin({ onSuccess }: { onSuccess: () => void }) {
                   className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
                 >
                   {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-                  {theme === "dark" ? "Light mode" : "Dark mode"}
+                  {theme === "dark" ? t.theme.light : t.theme.dark}
                 </button>
               </div>
             </motion.div>

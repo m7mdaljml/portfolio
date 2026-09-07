@@ -6,17 +6,18 @@ import CodeEditorWindow, {
   x,
   type Tok,
 } from "@/components/code-editor-window";
-import { funFacts } from "@/data/fun-facts";
-import { useLang } from "@/context/language-context";
+import translations from "@/i18n/translations";
+import { useContent } from "@/context/content-context";
 
 export default function FunFactsCodeEditor() {
-  const { t: lang } = useLang();
-  const at = lang.about;
-  const facts = funFacts;
+  const { getMergedTranslations } = useContent();
+  const en = translations.en.about;
+  const am = getMergedTranslations("en") as typeof translations.en;
+  const facts = am.about.funFacts ?? [];
 
   const lines: Tok[][] = [
     [c("// fun-facts.ts")],
-    [c(`// ${at.funFactsSubtitle}`)],
+    [c(`// ${en.funFactsSubtitle}`)],
     [],
     [k("export"), x(" "), k("const"), x(" "), p("FunFacts"), x(" = [")],
     ...facts.map((fact) => [x("  "), s(`"${fact}"`), x(",")]),

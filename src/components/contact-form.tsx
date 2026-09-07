@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { sendContactForm } from "@/services/contact-email";
+import { recordContactMessage } from "@/services/site-analytics";
 import { useLang } from "@/context/language-context";
 import { useContent } from "@/context/content-context";
 import {
@@ -107,6 +108,7 @@ const ContactForm = () => {
       setName("");
       setEmail("");
       setMessage("");
+      recordContactMessage(name.trim(), email.trim(), topicLabel);
     } catch {
       setStatus("error");
     }

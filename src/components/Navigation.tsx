@@ -144,7 +144,7 @@ export default function Navigation() {
                   data-testid="nav-mobile-theme"
                 >
                   {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-                  {theme === "dark" ? "Light mode" : "Dark mode"}
+                  {theme === "dark" ? t.theme.light : t.theme.dark}
                 </button>
               </div>
               <div className="my-2 border-t border-border" />

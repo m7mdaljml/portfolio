@@ -3,6 +3,10 @@ export type Lang = "en" | "ar";
 const translations = {
   en: {
     visitSite: "Visit the Site",
+    theme: {
+      dark: "Dark mode",
+      light: "Light mode",
+    },
     nav: {
       about: "About",
       skills: "Skills",
@@ -42,6 +46,16 @@ const translations = {
       competitionsValue: "3",
       funFactsTitle: "Fun Facts",
       funFactsSubtitle: "Things you didn't know about me",
+      funFacts: [
+        "⚽ Football Fan : Outside development, you'll probably find me watching football or discussing the latest match.",
+        "🔵🔴 Visca Barça : A loyal Barcelona supporter through every rebuild, comeback, and dramatic finish.",
+        "🐐 Messi Fan : For me, creativity, vision, and consistency have one name: Lionel Messi.",
+        "💡 I Build Before I Sleep : It's common for a small idea at night to become a finished feature before I go to bed.",
+        "🚀 Learning Never Stops : I'm always exploring new technologies and finding better ways to build scalable applications.",
+        "🎯 Clean Code Enthusiast : I enjoy refactoring almost as much as writing the first version.",
+        "🧩 Problem Solver : The more challenging the bug, the more satisfying the solution.",
+        "☕ Coffee Powered : Most of my ideas start with a cup of coffee. Turns coffee into scalable Vue.js applications.",
+      ],
     },
     skills: {
       tag: "skills",
@@ -273,6 +287,7 @@ const translations = {
         content: "Content",
         visitors: "Visitors",
         knowledgeBase: "Knowledge Base",
+        reports: "Reports",
       },
       buttons: {
         reset: "Reset",
@@ -295,6 +310,10 @@ const translations = {
         uniqueVisitors: "Unique Visitors",
         totalVisits: "Total Visits",
         activeDays: "Active Days",
+        avgTime: "Avg. Time Spent",
+        totalTime: "Total Time Spent",
+        timePerVisitor: "Time Per Visitor",
+        timePerVisitorDesc: "Total time each visitor spent on the site across their sessions",
         dailyTitle: "Daily Visits",
         dailyDesc: "Visits per day over the last 14 days",
         recentTitle: "Recent Visits",
@@ -304,6 +323,35 @@ const translations = {
           visitor: "Visitor",
           path: "Path",
           referrer: "Referrer",
+          avgTime: "Avg. time",
+          totalTime: "Total time",
+          sessions: "Sessions",
+          visits: "Visits",
+        },
+      },
+      reports: {
+        title: "Reports",
+        messages: {
+          title: "Messages Sent",
+          desc: "Messages submitted through the contact form",
+          total: "Total messages",
+          empty: "No messages sent yet.",
+          table: {
+            time: "Time",
+            name: "Name",
+            email: "Email",
+            topic: "Topic",
+          },
+        },
+        repoClicks: {
+          title: "GitHub Repo Clicks",
+          desc: "How many times each repository was clicked",
+          total: "Total clicks",
+          empty: "No repo clicks recorded yet.",
+          table: {
+            repo: "Repository",
+            clicks: "Clicks",
+          },
         },
       },
       toggles: {
@@ -389,6 +437,11 @@ const translations = {
           companiesValue: "Companies - Value",
           competitionsLabel: "Competitions - Label",
           competitionsValue: "Competitions - Value",
+          funFactsTitle: "Fun Facts",
+          funFactsHint:
+            "Editable fun facts shown in the code window. Add or remove items as needed.",
+          funFactsLabel: "Fun fact",
+          addFunFact: "+ Add fun fact",
         },
         skills: {
           heading: "Heading",
@@ -493,6 +546,10 @@ const translations = {
 
   ar: {
     visitSite: "زيارة الموقع",
+    theme: {
+      dark: "الوضع الداكن",
+      light: "الوضع الفاتح",
+    },
     nav: {
       about: "عن",
       skills: "المهارات",
@@ -754,10 +811,11 @@ const translations = {
           "أضف متغيرات VITE_FIREBASE_* إلى ملف .env لتُحفظ التغييرات لكل الزوار. بدونها، تنطبق التغييرات على هذا المتصفح فقط.",
       },
       tabs: {
-        sectionsLabel: "الأقسام والميزات",
-        content: "المحتوى",
-        visitors: "الزوار",
-        knowledgeBase: "قاعدة المعرفة",
+        sectionsLabel: 'الأقسام والميزات',
+        content: 'المحتوى',
+        visitors: 'الزوار',
+        knowledgeBase: 'قاعدة المعرفة',
+        reports: 'التقارير',
       },
       buttons: {
         reset: "إعادة تعيين",
@@ -774,21 +832,54 @@ const translations = {
       },
       loading: "جارٍ تحميل المحتوى...",
       visitors: {
-        loading: "جارٍ تحميل إحصائيات الزوار...",
+        loading: 'جارٍ تحميل إحصائيات الزوار...',
         noData:
-          "لا توجد بيانات زوار بعد. ستظهر البيانات بعد أن يزور أحدهم الموقع.",
-        uniqueVisitors: "زوار فريدون",
-        totalVisits: "إجمالي الزيارات",
-        activeDays: "أيام نشطة",
-        dailyTitle: "الزيارات اليومية",
-        dailyDesc: "الزيارات يومياً خلال آخر 14 يوماً",
-        recentTitle: "الزيارات الأخيرة",
-        recentDesc: "آخر 20 سجل زيارة",
+          'لا توجد بيانات زوار بعد. ستظهر البيانات بعد أن يزور أحدهم الموقع.',
+        uniqueVisitors: 'زوار فريدون',
+        totalVisits: 'إجمالي الزيارات',
+        activeDays: 'أيام نشطة',
+        avgTime: 'متوسط وقت الإقامة',
+        totalTime: 'إجمالي وقت الإقامة',
+        timePerVisitor: 'الوقت لكل زائر',
+        timePerVisitorDesc: 'إجمالي الوقت الذي قضاه كل زائر على الموقع عبر جلساته',
+        dailyTitle: 'الزيارات اليومية',
+        dailyDesc: 'الزيارات يومياً خلال آخر 14 يوماً',
+        recentTitle: 'الزيارات الأخيرة',
+        recentDesc: 'آخر 20 سجل زيارة',
         table: {
-          time: "الوقت",
-          visitor: "الزائر",
-          path: "المسار",
-          referrer: "المرجع",
+          time: 'الوقت',
+          visitor: 'الزائر',
+          path: 'المسار',
+          referrer: 'المرجع',
+          avgTime: 'متوسط الوقت',
+          totalTime: 'إجمالي الوقت',
+          sessions: 'الجلسات',
+          visits: 'الزيارات',
+        },
+      },
+      reports: {
+        title: 'التقارير',
+        messages: {
+          title: 'الرسائل المرسلة',
+          desc: 'الرسائل المُرسلة عبر نموذج التواصل',
+          total: 'إجمالي الرسائل',
+          empty: 'لم يتم إرسال رسائل بعد.',
+          table: {
+            time: 'الوقت',
+            name: 'الاسم',
+            email: 'البريد الإلكتروني',
+            topic: 'الموضوع',
+          },
+        },
+        repoClicks: {
+          title: 'نقرات مستودعات GitHub',
+          desc: 'كم مرة تم النقر على كل مستودع',
+          total: 'إجمالي النقرات',
+          empty: 'لا توجد نقرات مسجلة بعد.',
+          table: {
+            repo: 'المستودع',
+            clicks: 'النقرات',
+          },
         },
       },
       toggles: {
@@ -865,6 +956,11 @@ const translations = {
           companiesValue: "الشركات - القيمة",
           competitionsLabel: "المسابقات - التسمية",
           competitionsValue: "المسابقات - القيمة",
+          funFactsTitle: "حقائق ممتعة",
+          funFactsHint:
+            "حقائق ممتعة قابلة للتعديل تظهر في نافذة الكود. أضف أو احذف العناصر حسب الحاجة.",
+          funFactsLabel: "حقيقة ممتعة",
+          addFunFact: "+ إضافة حقيقة ممتعة",
         },
         skills: {
           heading: "العنوان الرئيسي",
