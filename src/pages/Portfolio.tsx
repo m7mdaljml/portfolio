@@ -10,7 +10,7 @@ import Education from "@/components/Education";
 import Achievements from "@/components/Achievements";
 import Projects from "@/components/projects";
 import Contact from "@/components/Contact";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 import { useContent } from "@/context/content-context";
 
 export default function Portfolio() {
