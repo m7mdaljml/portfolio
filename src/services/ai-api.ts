@@ -98,29 +98,69 @@ Rules:
 
 export const NO_ANSWER_MARKER = "I Have No Answers";
 
+const MAX_HISTORY_MESSAGES = 6;
+const MAX_RETRIES = 3;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function parseRetrySeconds(errText: string, res?: Response): number {
+  if (res) {
+    const retryAfter = Number(res.headers.get("retry-after"));
+    if (!Number.isNaN(retryAfter) && retryAfter > 0) return retryAfter;
+  }
+  const match = errText.match(/try again in ([\d.]+)s/i);
+  if (match) return Math.max(Number(match[1]), 1);
+  return 10;
+}
+
 export async function fetchAiResponse(
   messages: ChatMessage[],
 ): Promise<string> {
   const systemPrompt = await buildSystemPrompt();
+  const history = messages
+    .filter((m) => m.role !== "system")
+    .slice(-MAX_HISTORY_MESSAGES);
 
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: "qwen/qwen3.8-27b",
-      messages: [{ role: "system", content: systemPrompt }, ...messages],
-    }),
-  });
+  let lastErrorText = "";
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt += 1) {
+    let response: Response;
+    try {
+      response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "qwen/qwen3.8-27b",
+          messages: [{ role: "system", content: systemPrompt }, ...history],
+        }),
+      });
+    } catch {
+      throw new Error("AI API request failed: network error");
+    }
 
-  if (!response.ok) {
+    if (response.ok) {
+      const data = await response.json();
+      return data.choices?.[0]?.message?.content ?? "";
+    }
+
     const errText = await response.text();
+    lastErrorText = errText;
+
+    if (response.status === 429 && attempt < MAX_RETRIES) {
+      await sleep(parseRetrySeconds(errText, response) * 1000);
+      continue;
+    }
+
+    if (response.status === 413) {
+      throw new Error("AI API request failed: prompt too large");
+    }
+
     throw new Error(`AI API request failed: ${response.status} ${errText}`);
   }
 
-  const data = await response.json();
-
-  return data.choices?.[0]?.message?.content ?? "";
+  throw new Error(`AI API request failed: 429 ${lastErrorText}`);
 }
