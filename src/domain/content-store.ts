@@ -7,7 +7,7 @@ export type SectionKey =
   | "experience"
   | "achievements"
   | "education"
-  | "github"
+  | "projects"
   | "contact";
 
 export interface Flags {
@@ -17,7 +17,7 @@ export interface Flags {
   experience: boolean;
   achievements: boolean;
   education: boolean;
-  github: boolean;
+  projects: boolean;
   contact: boolean;
   aiChat: boolean;
   contactForm: boolean;
@@ -30,7 +30,7 @@ export const DEFAULT_FLAGS: Flags = {
   experience: true,
   achievements: true,
   education: true,
-  github: true,
+  projects: true,
   contact: true,
   aiChat: true,
   contactForm: true,
@@ -99,7 +99,7 @@ export interface SectionContent {
     desc1: string;
     desc2: string;
   };
-  github: {
+  projects: {
     title: string;
     subtitle: string;
   };

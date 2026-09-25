@@ -32,7 +32,7 @@ export default function SectionToggles() {
     { key: "experience", label: toggles.sections.experience.label, description: toggles.sections.experience.desc, icon: LayoutGrid, section: "experience" },
     { key: "achievements", label: toggles.sections.achievements.label, description: toggles.sections.achievements.desc, icon: LayoutGrid, section: "achievements" },
     { key: "education", label: toggles.sections.education.label, description: toggles.sections.education.desc, icon: LayoutGrid, section: "education" },
-    { key: "github", label: toggles.sections.github.label, description: toggles.sections.github.desc, icon: LayoutGrid, section: "github" },
+    { key: "projects", label: toggles.sections.projects.label, description: toggles.sections.projects.desc, icon: LayoutGrid, section: "projects" },
     { key: "contact", label: toggles.sections.contact.label, description: toggles.sections.contact.desc, icon: LayoutGrid, section: "contact" },
   ];
 

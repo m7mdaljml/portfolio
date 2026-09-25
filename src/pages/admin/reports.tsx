@@ -21,8 +21,8 @@ import { useLang } from "@/context/language-context";
 interface AnalyticsData {
   messageTotal: number;
   recentMessages: MessageRecord[];
-  repoClickTotal: number;
-  repoClicks: Record<string, number>;
+  projectClickTotal: number;
+  projectClicks: Record<string, number>;
 }
 
 export default function Reports() {
@@ -49,7 +49,7 @@ export default function Reports() {
     );
   }
 
-  const sortedRepos = Object.entries(data?.repoClicks ?? {}).sort(
+  const sortedProjects = Object.entries(data?.projectClicks ?? {}).sort(
     ([, a], [, b]) => b - a,
   );
 
@@ -122,9 +122,9 @@ export default function Reports() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <GitBranch size={18} />
-            {reports.repoClicks.title}
+            {reports.projectClicks.title}
           </CardTitle>
-          <CardDescription>{reports.repoClicks.desc}</CardDescription>
+          <CardDescription>{reports.projectClicks.desc}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4 mb-4">
@@ -132,24 +132,26 @@ export default function Reports() {
               <MousePointerClick className="text-primary" size={20} />
             </div>
             <div>
-              <p className="text-2xl font-bold">{data?.repoClickTotal ?? 0}</p>
+              <p className="text-2xl font-bold">{data?.projectClickTotal ?? 0}</p>
               <p className="text-xs text-muted-foreground">
-                {reports.repoClicks.total}
+                {reports.projectClicks.total}
               </p>
             </div>
           </div>
-          {sortedRepos.length > 0 ? (
+          {sortedProjects.length > 0 ? (
             <div className="space-y-2">
-              {sortedRepos.map(([repo, clicks]) => {
-                const maxClicks = Math.max(...sortedRepos.map(([, c]) => c));
+              {sortedProjects.map(([project, clicks]) => {
+                const maxClicks = Math.max(
+                  ...sortedProjects.map(([, c]) => c),
+                );
                 const pct = maxClicks > 0 ? (clicks / maxClicks) * 100 : 0;
                 return (
                   <div
-                    key={repo}
+                    key={project}
                     className="flex items-center gap-3 text-sm"
                   >
                     <span className="font-mono text-xs font-medium min-w-0 flex-1 truncate">
-                      {repo}
+                      {project}
                     </span>
                     <div className="flex-1 h-5 bg-muted rounded overflow-hidden">
                       <div
@@ -166,7 +168,7 @@ export default function Reports() {
             </div>
           ) : (
             <p className="text-sm text-muted-foreground py-4">
-              {reports.repoClicks.empty}
+              {reports.projectClicks.empty}
             </p>
           )}
         </CardContent>

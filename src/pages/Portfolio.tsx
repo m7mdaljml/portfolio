@@ -8,7 +8,7 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Achievements from "@/components/Achievements";
-import GitHubRepos from "@/components/github-repos";
+import Projects from "@/components/projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/footer";
 import { useContent } from "@/context/content-context";
@@ -27,7 +27,7 @@ export default function Portfolio() {
         {flags.experience && <Experience />}
         {flags.achievements && <Achievements />}
         {flags.education && <Education />}
-        {flags.github && <GitHubRepos />}
+        {flags.projects && <Projects />}
         {flags.contact && <Contact />}
       </main>
       <Footer />

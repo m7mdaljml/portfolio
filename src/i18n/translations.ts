@@ -14,7 +14,7 @@ const translations = {
       achievements: "Achievements",
       education: "Education",
       contact: "Contact",
-      github: "GitHub",
+      projects: "Projects",
     },
     hero: {
       firstname: "Mohammad",
@@ -211,14 +211,20 @@ const translations = {
         error: "Failed to send the message. Please try again.",
       },
     },
-    github: {
-      tag: "github",
-      title: "GitHub Projects",
+    projects: {
+      tag: "projects",
+      title: "Projects",
       subtitle:
-        "A selection of my public repositories - from web apps to competitive programming solutions.",
-      viewAll: "View All on GitHub",
-      loading: "Loading repositories...",
-      error: "Could not load repositories.",
+        "Live demos of my deployed projects - scroll inside a preview, or open it full screen in a new tab.",
+      viewAll: "More Projects on GitHub",
+      liveDemo: "Live Demo",
+      source: "Source",
+      openInNewTab: "Open the live demo in a new tab",
+      loadingPreview: "Loading live preview...",
+      previewUnavailable: "Live preview is blocked by this site.",
+      loading: "Loading projects...",
+      error: "Could not load projects.",
+      empty: "No projects with a live demo yet.",
       stars: "Stars",
       forks: "Forks",
       noDesc: "No description provided.",
@@ -250,7 +256,7 @@ const translations = {
         "What are his skills?",
         "Tell me about his experience",
         "How can I contact him?",
-        "His GitHub projects?",
+        "His projects?",
       ],
     },
     admin: {
@@ -343,13 +349,13 @@ const translations = {
             topic: "Topic",
           },
         },
-        repoClicks: {
-          title: "GitHub Repo Clicks",
-          desc: "How many times each repository was clicked",
+        projectClicks: {
+          title: "Project Demo Clicks",
+          desc: "How many times each project preview was opened",
           total: "Total clicks",
-          empty: "No repo clicks recorded yet.",
+          empty: "No project clicks recorded yet.",
           table: {
-            repo: "Repository",
+            project: "Project",
             clicks: "Clicks",
           },
         },
@@ -373,9 +379,9 @@ const translations = {
             desc: "Leadership & competitions",
           },
           education: { label: "Education", desc: "Academic foundation" },
-          github: {
-            label: "GitHub Projects",
-            desc: "Live repository showcase",
+          projects: {
+            label: "Projects",
+            desc: "Live demos of deployed projects",
           },
           contact: {
             label: "Contact",
@@ -398,7 +404,7 @@ const translations = {
           experience: "Experience",
           achievements: "Achievements",
           education: "Education",
-          github: "GitHub",
+          projects: "Projects",
           contact: "Contact",
         },
         editingPrefix: "Editing",
@@ -496,11 +502,11 @@ const translations = {
           desc1: "Description 1",
           desc2: "Description 2",
         },
-        github: {
+        projects: {
           heading: "Heading",
           title: "Title",
           subtitle: "Subtitle",
-          hint: "The repositories themselves are fetched live from GitHub. You can only edit the section heading above.",
+          hint: "Only repositories that have a homepage (live demo) set on GitHub are shown here, and they are displayed as live previews. You can only edit the section heading above.",
         },
         contact: {
           heading: "Heading",
@@ -557,7 +563,7 @@ const translations = {
       achievements: "الإنجازات",
       education: "التعليم",
       contact: "تواصل",
-      github: "GitHub",
+      projects: "المشاريع",
     },
     hero: {
       firstname: "محمد",
@@ -742,14 +748,20 @@ const translations = {
         error: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
       },
     },
-    github: {
-      tag: "github",
-      title: "مشاريع GitHub",
+    projects: {
+      tag: "projects",
+      title: "المشاريع",
       subtitle:
-        "مختارات من مستودعاتي العامة - من تطبيقات الويب إلى حلول البرمجة التنافسية.",
-      viewAll: "عرض الكل على GitHub",
-      loading: "جاري تحميل المستودعات...",
-      error: "تعذّر تحميل المستودعات.",
+        "عروض حية لمشاريعي المنشورة - مرّر داخل أي معاينة، أو افتحها بملء الشاشة في تبويب جديد.",
+      viewAll: "المزيد على GitHub",
+      liveDemo: "عرض مباشر",
+      source: "الكود",
+      openInNewTab: "فتح العرض المباشر في تبويب جديد",
+      loadingPreview: "جاري تحميل المعاينة...",
+      previewUnavailable: "هذه الموقع تمنع عرض المعاينة المباشرة.",
+      loading: "جاري تحميل المشاريع...",
+      error: "تعذّر تحميل المشاريع.",
+      empty: "لا توجد مشاريع بعرض مباشر بعد.",
       stars: "نجوم",
       forks: "تفرعات",
       noDesc: "لا يوجد وصف.",
@@ -779,7 +791,7 @@ const translations = {
         "ما هي مهاراته؟",
         "حدثني عن خبرته",
         "كيف يمكنني التواصل معه؟",
-        "مشاريعه على GitHub؟",
+        "مشاريعه؟",
       ],
     },
     admin: {
@@ -871,13 +883,13 @@ const translations = {
             topic: 'الموضوع',
           },
         },
-        repoClicks: {
-          title: 'نقرات مستودعات GitHub',
-          desc: 'كم مرة تم النقر على كل مستودع',
+        projectClicks: {
+          title: 'نقرات عروض المشاريع',
+          desc: 'كم مرة تم فتح معاينة كل مشروع',
           total: 'إجمالي النقرات',
           empty: 'لا توجد نقرات مسجلة بعد.',
           table: {
-            repo: 'المستودع',
+            project: 'المشروع',
             clicks: 'النقرات',
           },
         },
@@ -898,7 +910,7 @@ const translations = {
           experience: { label: "الخبرة", desc: "الرحلة المهنية الزمنية" },
           achievements: { label: "الإنجازات", desc: "القيادة والمسابقات" },
           education: { label: "التعليم", desc: "الخلفية الأكاديمية" },
-          github: { label: "مشاريع GitHub", desc: "عرض المستودعات" },
+          projects: { label: "المشاريع", desc: "عروض حية للمشاريع المنشورة" },
           contact: { label: "تواصل", desc: "طرق التواصل وقسم الرسائل" },
         },
         features: {
@@ -917,7 +929,7 @@ const translations = {
           experience: "الخبرة",
           achievements: "الإنجازات",
           education: "التعليم",
-          github: "GitHub",
+          projects: "المشاريع",
           contact: "تواصل",
         },
         editingPrefix: "جارٍ التحرير",
@@ -1015,11 +1027,11 @@ const translations = {
           desc1: "الوصف 1",
           desc2: "الوصف 2",
         },
-        github: {
+        projects: {
           heading: "العنوان الرئيسي",
           title: "العنوان",
           subtitle: "العنوان الفرعي",
-          hint: "المستودعات نفسها تُجلب مباشرة من GitHub. يمكنك تعديل عنوان القسم فقط أعلاه.",
+          hint: "يظهر هنا فقط المستودعات التي تحتوي على رابط عرض مباشر (homepage) في GitHub، وتُعرض كمعاينات حية. يمكنك تعديل عنوان القسم فقط أعلاه.",
         },
         contact: {
           heading: "العنوان الرئيسي",

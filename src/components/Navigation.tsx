@@ -40,7 +40,7 @@ export default function Navigation() {
     { id: "experience", label: t.nav.experience },
     { id: "achievements", label: t.nav.achievements },
     { id: "education", label: t.nav.education },
-    { id: "github", label: t.nav.github },
+    { id: "projects", label: t.nav.projects },
     { id: "contact", label: t.nav.contact },
   ];
 

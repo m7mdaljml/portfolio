@@ -19,7 +19,7 @@ A personal portfolio website for a Front-End Engineer, built with React, TypeScr
 - Bilingual portfolio (English / Arabic with full RTL support)
 - Light / dark theme
 - AI chat assistant powered by Groq
-- Live GitHub repositories showcase
+- Live project showcase with in-page previews of deployed GitHub repos
 - Content management via a password-protected admin dashboard
 - Anonymous visitor tracking stored in Firestore, viewable in the admin dashboard
 - Custom 404 page

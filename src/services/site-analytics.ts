@@ -24,9 +24,9 @@ export interface AnalyticsDoc {
     total: number;
     recent: MessageRecord[];
   };
-  repoClicks?: {
+  projectClicks?: {
     total: number;
-    byRepo: Record<string, number>;
+    byProject: Record<string, number>;
   };
   lastUpdated?: FieldValue;
 }
@@ -64,7 +64,7 @@ export async function recordContactMessage(
   }
 }
 
-export async function recordRepoClick(repoName: string): Promise<void> {
+export async function recordProjectClick(projectName: string): Promise<void> {
   if (!isFirebaseConfigured()) return;
   const db = getDb();
   if (!db) return;
@@ -74,10 +74,10 @@ export async function recordRepoClick(repoName: string): Promise<void> {
     await setDoc(
       ref,
       {
-        repoClicks: {
+        projectClicks: {
           total: increment(1) as unknown as FieldValue,
-          byRepo: {
-            [repoName]: increment(1) as unknown as FieldValue,
+          byProject: {
+            [projectName]: increment(1) as unknown as FieldValue,
           },
         },
         lastUpdated: serverTimestamp(),
@@ -92,8 +92,8 @@ export async function recordRepoClick(repoName: string): Promise<void> {
 export async function getAnalyticsData(): Promise<{
   messageTotal: number;
   recentMessages: MessageRecord[];
-  repoClickTotal: number;
-  repoClicks: Record<string, number>;
+  projectClickTotal: number;
+  projectClicks: Record<string, number>;
 } | null> {
   const db = getDb();
   if (!db) return null;
@@ -105,13 +105,13 @@ export async function getAnalyticsData(): Promise<{
 
     const data = snap.data() as AnalyticsDoc;
     const messages = data.messages;
-    const repoClicks = data.repoClicks;
+    const projectClicks = data.projectClicks;
 
     return {
       messageTotal: messages?.total ?? 0,
       recentMessages: (messages?.recent ?? []).slice(0, 20),
-      repoClickTotal: repoClicks?.total ?? 0,
-      repoClicks: repoClicks?.byRepo ?? {},
+      projectClickTotal: projectClicks?.total ?? 0,
+      projectClicks: projectClicks?.byProject ?? {},
     };
   } catch {
     return null;

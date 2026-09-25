@@ -15,6 +15,7 @@ interface GitHubRepo {
   description: string | null;
   language: string | null;
   html_url: string;
+  homepage: string | null;
   fork: boolean;
 }
 
@@ -23,6 +24,7 @@ interface StoredRepo {
   description: string | null;
   language: string | null;
   html_url: string;
+  homepage: string | null;
 }
 
 let reposCache: StoredRepo[] | null = null;
@@ -40,11 +42,12 @@ async function fetchGitHubRepos(): Promise<StoredRepo[]> {
     const data: GitHubRepo[] = await res.json();
     const repos: StoredRepo[] = data
       .filter((r) => !r.fork && r.name.toLowerCase() !== "m7mdaljml")
-      .map(({ name, description, language, html_url }) => ({
+      .map(({ name, description, language, html_url, homepage }) => ({
         name,
         description,
         language,
         html_url,
+        homepage,
       }));
     reposCache = repos;
     return repos;
@@ -68,12 +71,12 @@ async function buildSystemPrompt(): Promise<string> {
   const knowledgeBase = await getEffectiveKnowledgeBase();
   const reposSection =
     repos.length > 0
-      ? `\n\n## Mohammad's GitHub Projects (live from his GitHub)\n\n${repos
+      ? `\n\n## Mohammad's Projects (live from his GitHub)\n\nProjects listed as "Live demo: yes" are deployed websites shown on the portfolio's Projects section.\n\n${repos
           .map(
             (r) =>
               `- ${r.name}: ${r.description || "No description provided."} (Language: ${
                 r.language || "N/A"
-              }, URL: ${r.html_url})`,
+              }, Live demo: ${r.homepage ? `yes - ${r.homepage}` : "no"}, Code: ${r.html_url})`,
           )
           .join("\n")}`
       : "";
@@ -84,8 +87,8 @@ ${knowledgeBase}${reposSection}
 
 Rules:
 - Answer in the SAME language the visitor writes in: if they write in Arabic, answer in Arabic; if they write in English, answer in English.
-- ONLY answer questions related to Mohammad's portfolio content: his CV, skills, experience, education, achievements, GitHub projects, contact details, or the website itself.
-- When asked about his GitHub projects, list them by name using the "Mohammad's GitHub Projects (live from his GitHub)" section above, and mention what each project does based on its description.
+- ONLY answer questions related to Mohammad's portfolio content: his CV, skills, experience, education, achievements, projects, contact details, or the website itself.
+- When asked about his projects, list them by name using the "Mohammad's Projects (live from his GitHub)" section above, mention what each project does based on its description, and mention the live demo link for the ones that have one.
 - For simple greetings in any language (hi, hello, hey, good morning, مرحبا، أهلا، صباح الخير, etc.): greet the visitor back in the SAME language they used, then briefly invite them to ask about Mohammad. Do NOT ask for an email.
 - Also respond friendly to short polite phrases like "thank you", "شكرا", "bye", "مع السلامة" in the same language.
 - If a question is NOT about Mohammad or his portfolio - including random text, jokes, math problems, or any off-topic message - respond with exactly this text and nothing else: 'I Have No Answers'

@@ -1,8 +1,8 @@
 import { TextField, TextAreaField, SectionCard } from "./fields";
 import { useSectionEditor } from "./use-section-editor";
 
-export default function GitHubEditor({ lang }: { lang: "en" | "ar" }) {
-  const { merged, setField, sc } = useSectionEditor("github", lang);
+export default function ProjectsEditor({ lang }: { lang: "en" | "ar" }) {
+  const { merged, setField, sc } = useSectionEditor("projects", lang);
 
   return (
     <div className="space-y-4">

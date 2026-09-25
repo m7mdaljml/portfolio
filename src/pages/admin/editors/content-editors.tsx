@@ -10,7 +10,7 @@ import SkillsEditor from "./skills-editor";
 import ExperienceEditor from "./experience-editor";
 import AchievementsEditor from "./achievements-editor";
 import EducationEditor from "./education-editor";
-import GitHubEditor from "./github-editor";
+import ProjectsEditor from "./projects-editor";
 import ContactEditor from "./contact-editor";
 
 const SECTIONS: {
@@ -24,7 +24,7 @@ const SECTIONS: {
   { key: "experience", labelKey: "experience", Component: ExperienceEditor },
   { key: "achievements", labelKey: "achievements", Component: AchievementsEditor },
   { key: "education", labelKey: "education", Component: EducationEditor },
-  { key: "github", labelKey: "github", Component: GitHubEditor },
+  { key: "projects", labelKey: "projects", Component: ProjectsEditor },
   { key: "contact", labelKey: "contact", Component: ContactEditor },
 ];
 

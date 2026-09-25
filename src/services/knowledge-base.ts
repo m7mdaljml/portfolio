@@ -1,6 +1,6 @@
 export const KNOWLEDGE_BASE = `# Mohammad Aljamal - Front-End Engineer Portfolio
 
-This website is the personal portfolio of Mohammad Aljamal, a Front-End Engineer from Jordan. This AI assistant knows everything about Mohammad and his portfolio. It answers questions about his CV, skills, work experience, education, leadership & competitions, GitHub projects, and how to contact him.
+This website is the personal portfolio of Mohammad Aljamal, a Front-End Engineer from Jordan. This AI assistant knows everything about Mohammad and his portfolio. It answers questions about his CV, skills, work experience, education, leadership & competitions, projects, and how to contact him.
 
 ## Contact information
 - Email: mohammadaljamal121@gmail.com
@@ -49,17 +49,17 @@ He thrives on translating complex business requirements into elegant, responsive
 5. ACPC21 - Arab Collegiate Programming Championship (2021): Represented Jordan in the championship held in Luxor, Egypt, competing against top programmers from across the Arab world.
 6. IEEEXtreme 15.0 - IEEE Global Competition (2021): A 24-hour global programming competition with algorithmic challenges against teams worldwide.
 
-## GitHub Projects
-Mohammad's GitHub username is M7mdaljml (https://github.com/M7mdaljml). The portfolio showcases a selection of his public repositories - from web apps to competitive programming solutions - fetched live from GitHub.
+## Projects
+Mohammad's GitHub username is M7mdaljml (https://github.com/M7mdaljml). The portfolio Projects section showcases his public repositories that have a deployed website - fetched live from GitHub and displayed as live previews. Clicking a preview opens that project in a new tab.
 
 ## Website structure
-The portfolio is a single-page website with these sections: Hero (home), About, Skills, Experience, Achievements, Education, GitHub Projects, and Contact. The whole site is available in English and Arabic (the Arabic version flips the layout to read right-to-left) and supports dark and light themes. The CV can be downloaded from the Hero section.
+The portfolio is a single-page website with these sections: Hero (home), About, Skills, Experience, Achievements, Education, Projects, and Contact. The whole site is available in English and Arabic (the Arabic version flips the layout to read right-to-left) and supports dark and light themes. The CV can be downloaded from the Hero section.
 
 ====================================================
 
 # النسخة العربية
 
-هذا الموقع هو الموقع الشخصي لمحمد الجمل، مهندس واجهات أمامية من الأردن. هذا المساعد الذكي يعرف كل شيء عن محمد وعن موقعه. يجيب على الأسئلة حول سيرته الذاتية ومهاراته وخبراته العملية وتعليمه وقيادته ومسابقاته ومشاريعه على GitHub وطرق التواصل معه.
+هذا الموقع هو الموقع الشخصي لمحمد الجمل، مهندس واجهات أمامية من الأردن. هذا المساعد الذكي يعرف كل شيء عن محمد وعن موقعه. يجيب على الأسئلة حول سيرته الذاتية ومهاراته وخبراته العملية وتعليمه وقيادته ومسابقاته ومشاريعه وطرق التواصل معه.
 
 ## معلومات التواصل
 - البريد الإلكتروني: mohammadaljamal121@gmail.com
@@ -108,8 +108,8 @@ The portfolio is a single-page website with these sections: Hero (home), About, 
 5. ACPC21 - بطولة البرمجة الجامعية العربية (2021): تمثيل الأردن في البطولة المقامة في الأقصر، مصر، والتنافس مع أفضل المبرمجين من أنحاء العالم العربي.
 6. IEEEXtreme 15.0 - مسابقة IEEE العالمية (2021): مسابقة برمجة عالمية تمتد 24 ساعة مع تحديات خوارزمية ضد فرق من حول العالم.
 
-## مشاريع GitHub
-اسم مستخدم محمد على GitHub هو M7mdaljml (https://github.com/M7mdaljml). يعرض الموقع مختارات من مستودعاته العامة - من تطبيقات الويب إلى حلول البرمجة التنافسية - تُجلب مباشرة من GitHub.
+## المشاريع
+اسم مستخدم محمد على GitHub هو M7mdaljml (https://github.com/M7mdaljml). يعرض قسم المشاريع في الموقع مستودعاته العامة التي تحتوي على موقع منشور - تُجلب مباشرة من GitHub وتُعرض كمعاينات حية. الضغط على أي معاينة يفتح المشروع في تبويب جديد.
 
 ## هيكل الموقع
-الموقع عبارة عن صفحة واحدة تضم الأقسام التالية: الرئيسية، من أنا، المهارات، الخبرة، الإنجازات، التعليم، مشاريع GitHub، والتواصل. الموقع متاح باللغتين العربية والإنجليزية (النسخة العربية تنعكس لتُقرأ من اليمين إلى اليسار) ويدعم الوضعين الفاتح والداكن. يمكن تحميل السيرة الذاتية من قسم الرئيسية.`;
+الموقع عبارة عن صفحة واحدة تضم الأقسام التالية: الرئيسية، من أنا، المهارات، الخبرة، الإنجازات، التعليم، المشاريع، والتواصل. الموقع متاح باللغتين العربية والإنجليزية (النسخة العربية تنعكس لتُقرأ من اليمين إلى اليسار) ويدعم الوضعين الفاتح والداكن. يمكن تحميل السيرة الذاتية من قسم الرئيسية.`;
