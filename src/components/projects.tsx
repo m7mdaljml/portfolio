@@ -22,6 +22,7 @@ interface Repo {
 interface Project extends Repo {
   demoUrl: string;
   host: string;
+  previewType: "iframe" | "pdf";
 }
 
 const LANG_COLORS: Record<string, string> = {
@@ -40,6 +41,8 @@ const MAX_PROJECTS = 6;
 const PREVIEW_TIMEOUT = 7000;
 const DESKTOP_WIDTH = 1280;
 const DESKTOP_HEIGHT = 720;
+const STORE_POS_REPO = "store-pos";
+const STORE_POS_GUIDE = "/store-pos-module-guide.pdf";
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-GB", {
@@ -64,12 +67,21 @@ function toDemoUrl(homepage: string | null): string | null {
 }
 
 function toProject(repo: Repo): Project | null {
+  if (repo.name.toLowerCase() === STORE_POS_REPO) {
+    return {
+      ...repo,
+      demoUrl: STORE_POS_GUIDE,
+      host: "store-pos-module-guide.pdf",
+      previewType: "pdf",
+    };
+  }
   const demoUrl = toDemoUrl(repo.homepage);
   if (!demoUrl) return null;
   return {
     ...repo,
     demoUrl,
     host: new URL(demoUrl).host.replace(/^www\./, ""),
+    previewType: "iframe",
   };
 }
 
@@ -83,14 +95,17 @@ function ProjectPreview({
     loadingPreview: string;
     previewUnavailable: string;
     liveDemo: string;
+    viewGuide: string;
   };
   onOpen: () => void;
 }) {
+  const isPdf = project.previewType === "pdf";
+  const actionLabel = isPdf ? labels.viewGuide : labels.liveDemo;
   const frameRef = useRef<HTMLDivElement>(null);
   const shouldMount = useInView(frameRef, { once: true, margin: "300px" });
   const [scale, setScale] = useState(0.25);
   const [status, setStatus] = useState<"idle" | "loading" | "ready" | "failed">(
-    "idle",
+    isPdf ? "ready" : "idle",
   );
 
   useEffect(() => {
@@ -122,7 +137,7 @@ function ProjectPreview({
     >
       {shouldMount && status !== "failed" && (
         <iframe
-          src={project.demoUrl}
+          src={isPdf ? `${project.demoUrl}#toolbar=0&navpanes=0&scrollbar=0` : project.demoUrl}
           title={project.name}
           loading="lazy"
           referrerPolicy="no-referrer"
@@ -148,7 +163,7 @@ function ProjectPreview({
                 onClick={onOpen}
                 className="pointer-events-auto flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
               >
-                {labels.liveDemo}
+                {actionLabel}
                 <ArrowUpRight size={13} />
               </a>
             </>
@@ -168,10 +183,10 @@ function ProjectPreview({
             target="_blank"
             rel="noopener noreferrer"
             onClick={onOpen}
-            title={labels.liveDemo}
+            title={actionLabel}
             className="pointer-events-none group-hover/preview:pointer-events-auto focus-visible:pointer-events-auto flex items-center gap-1.5 rounded-full bg-background/95 border border-border px-3 py-1.5 text-[11px] font-medium text-foreground shadow-lg"
           >
-            {labels.liveDemo}
+            {actionLabel}
             <ArrowUpRight size={12} className="text-primary" />
           </a>
         </div>
@@ -224,6 +239,7 @@ export default function Projects() {
     loadingPreview: pt.loadingPreview,
     previewUnavailable: pt.previewUnavailable,
     liveDemo: pt.liveDemo,
+    viewGuide: pt.viewGuide,
   };
 
   return (
@@ -352,7 +368,7 @@ export default function Projects() {
                           onClick={() => recordProjectClick(project.name)}
                           className="flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
                         >
-                          {pt.liveDemo}
+                          {project.previewType === "pdf" ? pt.viewGuide : pt.liveDemo}
                           <ArrowUpRight size={13} />
                         </a>
                         <a
